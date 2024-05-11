@@ -1,7 +1,0 @@
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\bin\Debug\testquestion.exe.config
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\bin\Debug\testquestion.exe
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\bin\Debug\testquestion.pdb
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\obj\Debug\testquestion.csproj.AssemblyReference.cache
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\obj\Debug\testquestion.csproj.CoreCompileInputs.cache
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\obj\Debug\testquestion.exe
-C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\testquestion\testquestion\obj\Debug\testquestion.pdb

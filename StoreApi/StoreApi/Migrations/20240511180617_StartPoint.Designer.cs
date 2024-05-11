@@ -2,17 +2,19 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Repositories.EfCore;
 
 #nullable disable
 
-namespace Repositories.Migrations
+namespace StoreApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    partial class RepositoryContextModelSnapshot : ModelSnapshot
+    [Migration("20240511180617_StartPoint")]
+    partial class StartPoint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,7 +88,7 @@ namespace Repositories.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            DateTime = new DateTime(2024, 5, 11, 20, 44, 11, 848, DateTimeKind.Local).AddTicks(1090),
+                            DateTime = new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5845),
                             Description = "Demo Description",
                             Price = 0m,
                             ProductName = "Demo Product Name",
@@ -96,7 +98,7 @@ namespace Repositories.Migrations
                         {
                             Id = 2,
                             CategoryId = 2,
-                            DateTime = new DateTime(2024, 5, 11, 20, 44, 11, 848, DateTimeKind.Local).AddTicks(1102),
+                            DateTime = new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5857),
                             Description = "Demo Description_1",
                             Price = 0m,
                             ProductName = "Demo Product Name_1",
@@ -106,7 +108,7 @@ namespace Repositories.Migrations
                         {
                             Id = 3,
                             CategoryId = 3,
-                            DateTime = new DateTime(2024, 5, 11, 20, 44, 11, 848, DateTimeKind.Local).AddTicks(1103),
+                            DateTime = new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5858),
                             Description = "Demo Description_2",
                             Price = 0m,
                             ProductName = "Demo Product Name_2",

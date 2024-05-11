@@ -17,3 +17,4 @@ C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\Presentation\obj\Deb
 C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\Presentation\obj\Debug\net6.0\refint\Presentation.dll
 C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\Presentation\obj\Debug\net6.0\Presentation.pdb
 C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\Presentation\obj\Debug\net6.0\ref\Presentation.dll
+C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\Presentation\obj\Debug\net6.0\Presentation.sourcelink.json
