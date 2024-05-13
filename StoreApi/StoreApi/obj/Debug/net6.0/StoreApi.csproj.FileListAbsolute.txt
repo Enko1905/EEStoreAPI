@@ -98,3 +98,6 @@ C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\bin\Debug\n
 C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\bin\Debug\net6.0\Presentation.dll
 C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\bin\Debug\net6.0\Presentation.pdb
 C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\obj\Debug\net6.0\StoreApi.sourcelink.json
+C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\bin\Debug\net6.0\nlog.config
+C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\bin\Debug\net6.0\NLog.dll
+C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\StoreApi\StoreApi\bin\Debug\net6.0\NLog.Extensions.Logging.dll

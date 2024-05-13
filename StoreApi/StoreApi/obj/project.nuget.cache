@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "l1zYr7qJP3O8GfbDGbTemv7NBrvTlbz6O9xLhZYWwgcKUr8XdoHkCVFNqx9aL+UlCCSWFAvFhR1bTo5T6s6XrQ==",
+  "dgSpecHash": "KS51LNMXwuOJbZ1OlIi9N5a6knlNnzwiOl5uKnKENiScUos90xHGJugY687J2+ylarnWJysC5H2s6Vk6lrRXsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\StoreApi\\StoreApi.csproj",
   "expectedPackageFiles": [
@@ -69,6 +69,8 @@
     "C:\\Users\\enkoc\\.nuget\\packages\\mysql.entityframeworkcore\\6.0.25\\mysql.entityframeworkcore.6.0.25.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\enkoc\\.nuget\\packages\\nlog\\5.3.2\\nlog.5.3.2.nupkg.sha512",
+    "C:\\Users\\enkoc\\.nuget\\packages\\nlog.extensions.logging\\5.3.11\\nlog.extensions.logging.5.3.11.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",

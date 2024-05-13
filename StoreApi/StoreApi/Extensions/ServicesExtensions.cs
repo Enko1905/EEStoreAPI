@@ -25,7 +25,10 @@ namespace StoreApi.Extensions
         public static void ConfigureServicesManager(this IServiceCollection services)
         {
             services.AddScoped<IServiceManager, ServiceManager>();
-
+        }
+        public static void ConfigureLoggerSerciesManager(this IServiceCollection services)
+        {
+            services.AddSingleton<ILoggerService,LoggerManager>();
         }
     }
 }

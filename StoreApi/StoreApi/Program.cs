@@ -1,10 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using NLog;
 using Repositories.EfCore;
 using StoreApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentDirectory(),"/nlog.con"));
+
+
 
 builder.Services.AddControllers()
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly) 
@@ -18,7 +23,7 @@ builder.Services.ConfigureMysqlContext(builder.Configuration);
 
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServicesManager();
-
+builder.Services.ConfigureLoggerSerciesManager();
 /*
 builder.Services.AddDbContext<RepositoryContext>(option =>
 {

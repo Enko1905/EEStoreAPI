@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dbdoK8LlNT4Ftb5NDJmWNEuQ9UXMPI6KQQBfAqzJCF8Ofq5wj2vkg7QhvW7yot7YLIVRcGCqaD21ydVD4NFTdQ==",
+  "dgSpecHash": "RDKT4rc+/npkHU6iUP3+ZUtpCSmJR8Ina/RPzCHwbdn01BhCJUpxxijIJe3JL6lgYVnoldivV43QRP+Dr2jiMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\Services\\Services.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,8 @@
     "C:\\Users\\enkoc\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\mysql.data\\8.3.0\\mysql.data.8.3.0.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\mysql.entityframeworkcore\\6.0.25\\mysql.entityframeworkcore.6.0.25.nupkg.sha512",
+    "C:\\Users\\enkoc\\.nuget\\packages\\nlog\\5.3.2\\nlog.5.3.2.nupkg.sha512",
+    "C:\\Users\\enkoc\\.nuget\\packages\\nlog.extensions.logging\\5.3.11\\nlog.extensions.logging.5.3.11.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",

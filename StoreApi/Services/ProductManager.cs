@@ -12,9 +12,11 @@ namespace Services
     public class ProductManager : IProductService
     {
         private readonly IRepositoryManager _manager;
-        public ProductManager(IRepositoryManager manager)
+        private readonly ILoggerService _logger;
+        public ProductManager(IRepositoryManager manager, ILoggerService logger)
         {
             _manager = manager;
+            _logger = logger;
         }
         public Products CreateOneProduct(Products products)
         {
@@ -30,7 +32,9 @@ namespace Services
             var entity = _manager.Product.GetOneProductById(id, false);
             if (entity is null)
             {
-                throw new Exception($" Product With {id} Could Not Found. ");
+                string message = $"Product With id : {id} could not found.";
+                _logger.LogInfo(message);
+                throw new Exception(message);
             }
             _manager.Product.Delete(entity);
             _manager.Save();
@@ -51,7 +55,9 @@ namespace Services
             var entity = _manager.Product.GetOneProductById(id, false);
             if (entity is null)
             {
-                throw new Exception($"Product with id {id} cloud not found");
+                string message = $"Product With id : {id} could not found.";
+                _logger.LogInfo(message);
+                throw new Exception(message);
 
             }
             if (products is null)

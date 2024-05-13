@@ -81,7 +81,8 @@ namespace Presentation.Controllers
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                //return BadRequest(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
         [HttpDelete("{id:int}")]
