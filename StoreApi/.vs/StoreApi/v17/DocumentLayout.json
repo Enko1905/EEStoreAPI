@@ -1,7 +1,36 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2161DF21-76CD-4A45-BA79-F9FDB6409D74}|Services\\Services.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\services\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2161DF21-76CD-4A45-BA79-F9FDB6409D74}|Services\\Services.csproj|solutionrelative:services\\productmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A8E712-32CF-4699-8CDA-C67CC71D8642}|Presentation\\Presentation.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\presentation\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A8E712-32CF-4699-8CDA-C67CC71D8642}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52A50EB9-9DBD-4755-90E6-CCD344E54122}|Entities\\Entities.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\entities\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52A50EB9-9DBD-4755-90E6-CCD344E54122}|Entities\\Entities.csproj|solutionrelative:entities\\exceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52A50EB9-9DBD-4755-90E6-CCD344E54122}|Entities\\Entities.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\entities\\exceptions\\productnotfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52A50EB9-9DBD-4755-90E6-CCD344E54122}|Entities\\Entities.csproj|solutionrelative:entities\\exceptions\\productnotfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E213BC5-1CB8-48EA-B8A5-700E58DE5F21}|StoreApi\\StoreApi.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\storeapi\\extensions\\exceptionmiddlewareextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E213BC5-1CB8-48EA-B8A5-700E58DE5F21}|StoreApi\\StoreApi.csproj|solutionrelative:storeapi\\extensions\\exceptionmiddlewareextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E213BC5-1CB8-48EA-B8A5-700E58DE5F21}|StoreApi\\StoreApi.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\storeapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E213BC5-1CB8-48EA-B8A5-700E58DE5F21}|StoreApi\\StoreApi.csproj|solutionrelative:storeapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{52A50EB9-9DBD-4755-90E6-CCD344E54122}|Entities\\Entities.csproj|c:\\users\\enkoc\\onedrive\\masa\u00FCst\u00FC\\eestore\\eestore\\storeapi\\entities\\errormodel\\errordetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{52A50EB9-9DBD-4755-90E6-CCD344E54122}|Entities\\Entities.csproj|solutionrelative:entities\\errormodel\\errordetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 348,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +55,97 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductManager.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Services\\ProductManager.cs",
+              "RelativeDocumentMoniker": "Services\\ProductManager.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Services\\ProductManager.cs",
+              "RelativeToolTip": "Services\\ProductManager.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAgwDQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T16:19:04.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductNotFoundException.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Entities\\Exceptions\\ProductNotFoundException.cs",
+              "RelativeDocumentMoniker": "Entities\\Exceptions\\ProductNotFoundException.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Entities\\Exceptions\\ProductNotFoundException.cs",
+              "RelativeToolTip": "Entities\\Exceptions\\ProductNotFoundException.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T16:01:39.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NotFoundException.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Entities\\Exceptions\\NotFoundException.cs",
+              "RelativeDocumentMoniker": "Entities\\Exceptions\\NotFoundException.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Entities\\Exceptions\\NotFoundException.cs",
+              "RelativeToolTip": "Entities\\Exceptions\\NotFoundException.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T15:53:33.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Presentation\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Presentation\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAEUAAAAAAAAAAIAwwFAAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T15:26:50.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\StoreApi\\Program.cs",
+              "RelativeDocumentMoniker": "StoreApi\\Program.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\StoreApi\\Program.cs",
+              "RelativeToolTip": "StoreApi\\Program.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADAAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T15:18:08.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExceptionMiddlewareExtension.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\StoreApi\\Extensions\\ExceptionMiddlewareExtension.cs",
+              "RelativeDocumentMoniker": "StoreApi\\Extensions\\ExceptionMiddlewareExtension.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\StoreApi\\Extensions\\ExceptionMiddlewareExtension.cs",
+              "RelativeToolTip": "StoreApi\\Extensions\\ExceptionMiddlewareExtension.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAUwBoAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T15:06:44.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ErrorDetails.cs",
+              "DocumentMoniker": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Entities\\ErrorModel\\ErrorDetails.cs",
+              "RelativeDocumentMoniker": "Entities\\ErrorModel\\ErrorDetails.cs",
+              "ToolTip": "C:\\Users\\enkoc\\OneDrive\\Masa\u00FCst\u00FC\\eeStore\\EEStore\\StoreApi\\Entities\\ErrorModel\\ErrorDetails.cs",
+              "RelativeToolTip": "Entities\\ErrorModel\\ErrorDetails.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-14T14:55:42.158Z",
+              "EditorCaption": ""
             }
           ]
         },
@@ -44,6 +164,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
             }
           ]
         },

@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Entities.Exceptions;
+using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -25,16 +26,12 @@ namespace Services
             return products;
         }
 
-
-
         public void DeleteOneProduct(int id, bool trackChanges)
         {
             var entity = _manager.Product.GetOneProductById(id, false);
             if (entity is null)
             {
-                string message = $"Product With id : {id} could not found.";
-                _logger.LogInfo(message);
-                throw new Exception(message);
+                throw new ProductNotFoundException(id);
             }
             _manager.Product.Delete(entity);
             _manager.Save();
@@ -47,7 +44,12 @@ namespace Services
 
         public Products GetOneProductById(int id, bool trackChanges)
         {
-            return _manager.Product.GetOneProductById(id, trackChanges);
+            var book = _manager.Product.GetOneProductById(id, trackChanges);
+            if (book is null)
+            {
+                throw new ProductNotFoundException(id);
+            }
+            return book;
         }
 
         public void UpdateOneProduct(int id, Products products)
@@ -55,10 +57,7 @@ namespace Services
             var entity = _manager.Product.GetOneProductById(id, false);
             if (entity is null)
             {
-                string message = $"Product With id : {id} could not found.";
-                _logger.LogInfo(message);
-                throw new Exception(message);
-
+                throw new ProductNotFoundException(id);
             }
             if (products is null)
             {

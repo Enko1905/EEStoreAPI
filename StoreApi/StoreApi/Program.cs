@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using Repositories.EfCore;
+using Services.Contracts;
 using StoreApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,11 +34,23 @@ builder.Services.AddDbContext<RepositoryContext>(option =>
 
 var app = builder.Build();
 
+//StoreApi> Extension>ExceptionMiddlewareExtension
+var logger = app.Services.GetRequiredService<ILoggerService>();
+app.ConfigureExceptionHandler(logger);
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+/*
+"Production", yazýlým ürününün gerçek kullanýcýlar tarafýndan kullanýldýðý ve iþletme için gerçek deðer saðladýðý ortamý ifade eder.*/
+if (app.Environment.IsProduction())
+{
+    /*app.UseHsts() ASP.NET Core uygulamalarýnda HTTPS Strict Transport Security (HSTS) özelliðini etkinleþtiren bir middleware'dir. Bu özellik, tarayýcýlara uygulamanýn sadece HTTPS üzerinden eriþilebileceðini bildiren bir HTTP yanýt baþlýðý gönderir. Böylece, tarayýcýlar bu siteye gelecek isteklerde otomatik olarak HTTPS kullanacaktýr.*/
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
