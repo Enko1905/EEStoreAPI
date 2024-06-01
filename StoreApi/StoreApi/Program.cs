@@ -8,13 +8,23 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentDirectory(),"/nlog.con"));
+LogManager.Setup().LoadConfigurationFromFile(String.Concat(Directory.GetCurrentDirectory(), "/nlog.con"));
 
 
 
-builder.Services.AddControllers()
-    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly) 
-    .AddNewtonsoftJson();
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true; //Ýçerik Pazarlýðý Açýk
+    config.ReturnHttpNotAcceptable = true;  //Geçersiz kabul edilmediði 406
+})
+
+    .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
+    .AddNewtonsoftJson()
+    .AddCustomCsvFormatter()
+    .AddXmlDataContractSerializerFormatters();
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -25,6 +35,7 @@ builder.Services.ConfigureMysqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServicesManager();
 builder.Services.ConfigureLoggerSerciesManager();
+builder.Services.AddAutoMapper(typeof(Program));
 /*
 builder.Services.AddDbContext<RepositoryContext>(option =>
 {

@@ -1,4 +1,6 @@
-﻿using Entities.Exceptions;
+﻿using AutoMapper;
+using Entities.DataTransferObjects;
+using Entities.Exceptions;
 using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -14,10 +16,12 @@ namespace Services
     {
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
-        public ProductManager(IRepositoryManager manager, ILoggerService logger)
+        private readonly IMapper _mapper;
+        public ProductManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
         {
             _manager = manager;
             _logger = logger;
+            _mapper = mapper;
         }
         public Products CreateOneProduct(Products products)
         {
@@ -37,9 +41,10 @@ namespace Services
             _manager.Save();
         }
 
-        public IEnumerable<Products> GetAllProduct(bool trachChanges)
+        public IEnumerable<ProductDto> GetAllProduct(bool trachChanges)
         {
-            return _manager.Product.GetAllProduct(trachChanges);
+            var product = _manager.Product.GetAllProduct(trachChanges);
+            return _mapper.Map<IEnumerable<ProductDto>>(product);
         }
 
         public Products GetOneProductById(int id, bool trackChanges)
@@ -52,21 +57,19 @@ namespace Services
             return book;
         }
 
-        public void UpdateOneProduct(int id, Products products)
+        public void UpdateOneProduct(int id, ProductDtoForUpdate productDto)
         {
             var entity = _manager.Product.GetOneProductById(id, false);
             if (entity is null)
             {
                 throw new ProductNotFoundException(id);
             }
-            if (products is null)
-            {
-                throw new ArgumentException(nameof(products));
-            }
-            entity.ProductName = products.ProductName;
-            entity.Stok = products.Stok;
-            entity.Price = products.Price;
-            entity.Description = products.Description;
+            
+            //entity.ProductName = products.ProductName;
+            //entity.Stok = products.Stok;
+            //entity.Price = products.Price;
+            //entity.Description = products.Description;
+            entity = _mapper.Map<Products>(productDto);
 
             _manager.Product.Update(entity);
             _manager.Save();

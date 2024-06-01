@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KS51LNMXwuOJbZ1OlIi9N5a6knlNnzwiOl5uKnKENiScUos90xHGJugY687J2+ylarnWJysC5H2s6Vk6lrRXsw==",
+  "dgSpecHash": "t2CMg92Dm3wmxz8+cVcNzm7ixXwbbrGZSU6hvx3zwFpXixEKO9Xn96oazGaV3BI0Rh4Ag4l5OVgd+CaeUN97Eg==",
   "success": true,
   "projectFilePath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\StoreApi\\StoreApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\enkoc\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\enkoc\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\google.protobuf\\3.25.1\\google.protobuf.3.25.1.nupkg.sha512",
     "C:\\Users\\enkoc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

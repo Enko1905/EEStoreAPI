@@ -1,4 +1,5 @@
-﻿using Entities.Exceptions;
+﻿using Entities.DataTransferObjects;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -49,7 +50,7 @@ namespace Presentation.Controllers
 
         }
         [HttpPut("{id:int}")]
-        public IActionResult UpdateOneProduct([FromRoute(Name = "id")] int id, [FromBody] Products products)
+        public IActionResult UpdateOneProduct([FromRoute(Name = "id")] int id, [FromBody] ProductDtoForUpdate productsDto)
         {
 
             var entity = _manager.ProductService.GetOneProductById(id, false);
@@ -57,11 +58,11 @@ namespace Presentation.Controllers
             {
                 return NotFound(); //404 not found
             }
-            if (id != products.Id)
+            if (id != productsDto.Id)
             {
                 return BadRequest(); //400 bad request eşleşmedi
             }
-            _manager.ProductService.UpdateOneProduct(id, products);
+            _manager.ProductService.UpdateOneProduct(id, productsDto);
             return NoContent();
         }
         [HttpDelete("{id:int}")]
@@ -77,7 +78,9 @@ namespace Presentation.Controllers
             var entity = _manager.ProductService.GetOneProductById(id, false);
            
             productPatch.ApplyTo(entity);
-            _manager.ProductService.UpdateOneProduct(id, entity);
+            _manager.ProductService.UpdateOneProduct(id, 
+                new ProductDtoForUpdate(entity.Id,entity.ProductName,entity.Stok,entity.Description,entity.Price,entity.CategoryId)
+                );
             return NoContent();
         }
 
