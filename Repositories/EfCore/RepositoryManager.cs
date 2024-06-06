@@ -33,9 +33,10 @@ namespace Repositories.EfCore
    * Yapılan değişiklikleri veritabanına kaydeder.
    * Kaydetme işlemi, bağlam nesnesinin SaveChanges metodu ile gerçekleştirilir.
    */
-        public void Save()
+        public async Task SaveAsync()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            
         }
     }
 }

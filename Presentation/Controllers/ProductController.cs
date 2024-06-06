@@ -23,74 +23,72 @@ namespace Presentation.Controllers
             _manager = manager;
         }
         [HttpGet]
-        public IActionResult GetAllProduct()
+        public async Task<IActionResult> GetAllProductAsync()
         {
-            var result = _manager.ProductService.GetAllProduct(false);
+            var result = await _manager.ProductService.GetAllProductAsync(false);
             return Ok(result);
         }
         [HttpGet("{id:int}")]
-        public IActionResult GetOneProduct([FromRoute(Name = "id")] int id)
+        public async Task<IActionResult> GetOneProductAsync([FromRoute(Name = "id")] int id)
         {
-
-            var book = _manager.ProductService.GetOneProductById(id, false);
-
+            var book = await _manager.ProductService.GetOneProductByIdAsync(id, false);
             return Ok(book);
-
         }
         [HttpPost]
-        public IActionResult CreateOneProduct([FromBody] ProductDtoForInsertion productsDto)
+        public async Task<IActionResult> CreateOneProductAsync([FromBody] ProductDtoForInsertion productsDto)
         {
-
             if (productsDto is null)
             {
                 return BadRequest(); //404
             }
-            _manager.ProductService.CreateOneProduct(productsDto);
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+            await _manager.ProductService.CreateOneProductAsync(productsDto);
             return StatusCode(201, productsDto); //CreatedAtRoute() 
 
         }
         [HttpPut("{id:int}")]
-        public IActionResult UpdateOneProduct([FromRoute(Name = "id")] int id, [FromBody] ProductDtoForUpdate productsDto)
+        public async Task<IActionResult> UpdateOneProductAsync([FromRoute(Name = "id")] int id, [FromBody] ProductDtoForUpdate productsDto)
         {
 
-            var entity = _manager.ProductService.GetOneProductById(id, false);
+            var entity = await _manager.ProductService.GetOneProductByIdAsync(id, false);
             if (entity is null)
             {
                 return NotFound(); //404 not found
             }
-            if (id != productsDto.Id)
+            if (!ModelState.IsValid)
             {
-                return BadRequest(); //400 bad request eşleşmedi
+                return UnprocessableEntity(ModelState);
             }
-            _manager.ProductService.UpdateOneProduct(id, productsDto);
+            await _manager.ProductService.UpdateOneProductAsync(id, productsDto);
             return NoContent();
         }
         [HttpDelete("{id:int}")]
-        public IActionResult DeleteOneProduct([FromRoute] int id)
+        public async Task<IActionResult> DeleteOneProductAsync([FromRoute] int id)
         {
-            _manager.ProductService.DeleteOneProduct(id, false);
+            await _manager.ProductService.DeleteOneProductAsync(id, false);
             return NoContent();
         }
 
         [HttpPatch("{id:int}")]
-        public IActionResult PartiallyUpdateOneProduct([FromRoute(Name = "id")] int id,
-            [FromBody] JsonPatchDocument<ProductDto> productPatch)
+        public async Task<IActionResult> PartiallyUpdateOneProductAsync([FromRoute(Name = "id")] int id,
+            [FromBody] JsonPatchDocument<ProductDtoForUpdate> productPatch)
         {
-            var productDto = _manager.ProductService.GetOneProductById(id, false);
-
-            productPatch.ApplyTo(productDto);
-            _manager.ProductService.UpdateOneProduct(id,
-                new ProductDtoForUpdate()
-                {
-                    Id = productDto.Id,
-                    ProductName = productDto.ProductName,
-                    CategoryId = productDto.CategoryId,
-                    Description = productDto.Description,
-                    Price = productDto.Price,
-                    Stok = productDto.Stok
-                });
-
-            return NoContent();
+            if (productPatch is null)
+            {
+                return BadRequest(); //400
+            }
+            var result = await _manager.ProductService.GetOneProductForPatchAsync(id, false);
+            productPatch.ApplyTo(result.productDtoForUpdate, ModelState);
+            TryValidateModel(result.productDtoForUpdate);
+            if (!ModelState.IsValid)
+            {
+                return UnprocessableEntity(ModelState);
+            }
+            await _manager.ProductService.SaveChangesForPatchAsync(result.productDtoForUpdate, result.products);
+            return NoContent(); //204 
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,19 @@ namespace Repositories.EfCore
         {
 
         }
-        void IProductRepository.CreateOneProduct(Products products) => Create(products);
+        public void CreateOneProduct(Products products) => Create(products);
 
-        void IProductRepository.DeleteOneProduct(Products products) => Delete(products);
+        public void DeleteOneProduct(Products products) => Delete(products);
 
-        IQueryable<Products> IProductRepository.GetAllProduct(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(x => x.Id);
+        public async Task<IEnumerable<Products>> GetAllProductAsync(bool trackChanges) =>
+            await FindAll(trackChanges)
+            .OrderBy(x => x.Id)
+            .ToListAsync();
 
-        Products IProductRepository.GetOneProductById(int id, bool trackChanges) =>
-             FindByCondition(x => x.Id == id, trackChanges).SingleOrDefault();
+        public async Task<Products> GetOneProductByIdAync(int id, bool trackChanges) =>
+             await FindByCondition(x => x.Id == id, trackChanges).SingleOrDefaultAsync();
 
-        void IProductRepository.UpdateOneProduct(Products products) => Update(products);
+        public void UpdateOneProduct(Products products) => Update(products);
 
     }
 }

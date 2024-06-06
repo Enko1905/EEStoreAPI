@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using Repositories.EfCore;
@@ -42,6 +43,14 @@ builder.Services.AddDbContext<RepositoryContext>(option =>
     option.UseMySQL(builder.Configuration.GetConnectionString("MysqlConnection"));
 });
 */
+
+
+//ModelState 
+builder.Services.Configure<ApiBehaviorOptions>(option =>
+{
+    option.SuppressModelStateInvalidFilter = true;
+});
+
 
 var app = builder.Build();
 
