@@ -1,17 +1,21 @@
 ﻿using Entities.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.ActionFilters;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
     [Route("api/products")]
     public class ProductController : ControllerBase
@@ -23,10 +27,12 @@ namespace Presentation.Controllers
             _manager = manager;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllProductAsync()
+        public async Task<IActionResult> GetAllProductAsync([FromQuery] ProductParameters productParameters)
         {
-            var result = await _manager.ProductService.GetAllProductAsync(false);
-            return Ok(result);
+            var pagedResult = await _manager.ProductService.GetAllProductAsync(productParameters, false);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+
+            return Ok(pagedResult.Item1);
         }
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneProductAsync([FromRoute(Name = "id")] int id)
@@ -34,34 +40,20 @@ namespace Presentation.Controllers
             var book = await _manager.ProductService.GetOneProductByIdAsync(id, false);
             return Ok(book);
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public async Task<IActionResult> CreateOneProductAsync([FromBody] ProductDtoForInsertion productsDto)
         {
-            if (productsDto is null)
-            {
-                return BadRequest(); //404
-            }
-            if (!ModelState.IsValid)
-            {
-                return UnprocessableEntity(ModelState);
-            }
+
             await _manager.ProductService.CreateOneProductAsync(productsDto);
             return StatusCode(201, productsDto); //CreatedAtRoute() 
 
         }
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneProductAsync([FromRoute(Name = "id")] int id, [FromBody] ProductDtoForUpdate productsDto)
         {
-
             var entity = await _manager.ProductService.GetOneProductByIdAsync(id, false);
-            if (entity is null)
-            {
-                return NotFound(); //404 not found
-            }
-            if (!ModelState.IsValid)
-            {
-                return UnprocessableEntity(ModelState);
-            }
             await _manager.ProductService.UpdateOneProductAsync(id, productsDto);
             return NoContent();
         }

@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Repositories.Contracts
 {
     public interface IProductRepository : IRepositoryBase<Products>
     {
-        Task<IEnumerable<Products>> GetAllProductAsync(bool trackChanges);
+        Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters ,bool trackChanges);
         Task<Products> GetOneProductByIdAync(int id, bool trackChanges);
         void CreateOneProduct(Products products);
         void UpdateOneProduct(Products products);
