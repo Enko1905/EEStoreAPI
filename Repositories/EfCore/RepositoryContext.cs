@@ -19,18 +19,33 @@ namespace Repositories.EfCore
         }
 
         public DbSet<Products> Products { get; set; }
-        public DbSet<Categories> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<MainCategory> MainCategories { get; set; }
+        public DbSet<SubCategory> SubCategories { get; set; }
+        public DbSet<CategoryDifferents> CategoryDifferents { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<CityDistricts> CityDistricts { get; set; }
+        public DbSet<Color> Colors { get; set; }
+        public DbSet<Size> Sizes { get; set; }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ProductAttribute> ProductAttributes { get; set; }
+        public DbSet<ProductVariants> ProductVariants { get; set; }
+        public DbSet<ProductCustomAttributes> ProductCustomAttributes { get; set; }   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Veritabanındaki sütun adını belirtin
             //base.OnModelCreating(modelBuilder);
-    
 
 
 
-             modelBuilder.ApplyConfiguration(new ProductConfig());
-             modelBuilder.ApplyConfiguration(new CategoryConfig());
+
+            // modelBuilder.ApplyConfiguration(new ProductConfig());
+            // modelBuilder.ApplyConfiguration(new CategoryConfig());
 
         }
     }

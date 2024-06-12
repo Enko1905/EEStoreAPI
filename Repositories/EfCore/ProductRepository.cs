@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.EfCore
 {
-    public class ProductRepository : RepositoryBase<Products>, IProductRepository
+    public sealed class ProductRepository : RepositoryBase<Products>, IProductRepository
     {
         public ProductRepository(RepositoryContext context) : base(context)
         {
@@ -22,11 +22,9 @@ namespace Repositories.EfCore
 
         public async Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters, bool trackChanges)
         {
-            var products = await FindByCondition(b =>
-            ((b.Price >= productParameters.minPrice) &&
-            (b.Price <= productParameters.maxPrice))
-            , trackChanges)
-            .OrderBy(x => x.Id)
+            var products = await FindAll(trackChanges)
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .OrderBy(x => x.ProductId)
             .ToListAsync();
 
             return PagedList<Products>.ToPagedList(products,
@@ -35,7 +33,7 @@ namespace Repositories.EfCore
         }
 
         public async Task<Products> GetOneProductByIdAync(int id, bool trackChanges) =>
-             await FindByCondition(x => x.Id == id, trackChanges).SingleOrDefaultAsync();
+             await FindByCondition(x => x.ProductId == id, trackChanges).SingleOrDefaultAsync();
 
         public void UpdateOneProduct(Products products) => Update(products);
 

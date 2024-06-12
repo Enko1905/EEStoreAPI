@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Repositories.EfCore.Config
 {
-    public class CategoryConfig : IEntityTypeConfiguration<Categories>
+    public class CategoryConfig : IEntityTypeConfiguration<Category>
     {
 
-        public void Configure(EntityTypeBuilder<Categories> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasData(
-                new Categories { CategoryId = 1, CategoyName = "Demo Category" },
-            new Categories { CategoryId = 2, CategoyName = "Demo Category2" },
-            new Categories { CategoryId = 3, CategoyName = "Demo Category3" });
+                new Category { CategoryId = 1, Name = "Demo Category" },
+            new Category { CategoryId = 2, Name = "Demo Category2" },
+            new Category { CategoryId = 3, Name = "Demo Category3" });
 
 
 

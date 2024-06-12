@@ -11,26 +11,33 @@ namespace Entities.Models
 {
     public class Products
     {
-
         [Key]
-        public int Id { get; set; }
-        // [Required(ErrorMessage ="Ürün Adı Boş")]
-        //[MaxLength(250, ErrorMessage = "Ürün adı en fazla 100 karakter olabilir.")]
+        public int ProductId { get; set; }
 
-        public string ProductName { get; set; }=string.Empty;   
+        [Required, MaxLength(100)]
+        public string ProductName { get; set; }
 
-        //[Required(ErrorMessage = "CategoryId Boş olamaz")]
-        [ForeignKey(nameof(Categories))] // Categories ile olan ilişkiyi belirtmek için
-        public int CategoryId { get; set; } // Zorunlu CategoryId
-        //public  Categories Categories { get; set; }
+        [Required]
+        public decimal Price { get; set; }
 
-        public String Description { get; set; } = string.Empty;
-        public DateTime DateTime { get; set; }
-        public Decimal Price { get; set; }
-        public int Stok { get; set; }
-        public Products()
-        {
-            DateTime = DateTime.Now;
-        }
+        [Required]
+        public int Stock { get; set; }
+
+        public string Description { get; set; }
+
+        [ForeignKey("SubCategory")]
+        public int SubCategoryId { get; set; }
+        public SubCategory SubCategory { get; set; }
+
+
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+
+        public List<ProductAttribute> ProductAttributes { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<ProductCustomAttributes> productCustomAttributes { get; set; }
+        public ICollection<ProductVariants> productVariants { get; set; }
     }
 }
