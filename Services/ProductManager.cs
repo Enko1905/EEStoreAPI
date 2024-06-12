@@ -2,6 +2,7 @@
 using Entities.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
+using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -23,49 +24,60 @@ namespace Services
             _logger = logger;
             _mapper = mapper;
         }
-        public ProductDto CreateOneProduct(ProductDtoForInsertion productsDto)
+        public async Task<ProductDto> CreateOneProductAsync(ProductDtoForInsertion productsDto)
         {
             var entity = _mapper.Map<Products>(productsDto);
             _manager.Product.Create(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
             return _mapper.Map<ProductDto>(entity);
         }
 
-        public void DeleteOneProduct(int id, bool trackChanges)
+        public async Task DeleteOneProductAsync(int id, bool trackChanges)
         {
-            var entity = _manager.Product.GetOneProductById(id, false);
-            if (entity is null)
-            {
-                throw new ProductNotFoundException(id);
-            }
+            var entity = await GetOneProductByIdAndCheckExists(id, trackChanges);
             _manager.Product.Delete(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
         }
 
-        public IEnumerable<ProductDto> GetAllProduct(bool trachChanges)
+        public async Task<(IEnumerable<ProductDto>, MetaData metaData)> GetAllProductAsync(ProductParameters productParameters, bool trachChanges)
         {
-            var product = _manager.Product.GetAllProduct(trachChanges);
-            return _mapper.Map<IEnumerable<ProductDto>>(product);
+            if (!productParameters.ValidPriceRange)
+                throw new PriceOutofRangeBadRequestException();
+
+            var productWithsMetaData = await _manager.Product
+                .GetAllProductAsync(productParameters, trachChanges);
+            var productDto = _mapper.Map<IEnumerable<ProductDto>>(productWithsMetaData);
+            return (productDto, productWithsMetaData.MetaData);
         }
 
-        public ProductDto GetOneProductById(int id, bool trackChanges)
+        public async Task<ProductDto> GetOneProductByIdAsync(int id, bool trackChanges)
         {
-            var product = _manager.Product.GetOneProductById(id, trackChanges);
+            var product = await GetOneProductByIdAndCheckExists(id, trackChanges);
+
+            return _mapper.Map<ProductDto>(product);
+        }
+
+        public async Task<(ProductDtoForUpdate productDtoForUpdate, Products products)> GetOneProductForPatchAsync(int id, bool trachChanges)
+        {
+            var product = await _manager.Product.GetOneProductByIdAync(id, trachChanges);
             if (product is null)
             {
                 throw new ProductNotFoundException(id);
             }
-            return _mapper.Map<ProductDto>(product);
+            var productDtoForUpdate = _mapper.Map<ProductDtoForUpdate>(product);
+            return (productDtoForUpdate, product);
         }
 
-        public void UpdateOneProduct(int id, ProductDtoForUpdate productDto)
+        public async Task SaveChangesForPatchAsync(ProductDtoForUpdate productDtoForUpdate, Products products)
         {
-            var entity = _manager.Product.GetOneProductById(id, false);
-            if (entity is null)
-            {
-                throw new ProductNotFoundException(id);
-            }
-            
+            _mapper.Map(productDtoForUpdate, products);
+            await _manager.SaveAsync();
+        }
+
+        public async Task UpdateOneProductAsync(int id, ProductDtoForUpdate productDto)
+        {
+            var entity = await GetOneProductByIdAndCheckExists(id, false);
+
             //entity.ProductName = products.ProductName;
             //entity.Stok = products.Stok;
             //entity.Price = products.Price;
@@ -73,8 +85,18 @@ namespace Services
             entity = _mapper.Map<Products>(productDto);
 
             _manager.Product.Update(entity);
-            _manager.Save();
+            await _manager.SaveAsync();
 
+        }
+
+        public async Task<Products> GetOneProductByIdAndCheckExists(int id, bool trackChanges)
+        {
+            var entity = await _manager.Product.GetOneProductByIdAync(id, false);
+            if (entity is null)
+            {
+                throw new ProductNotFoundException(id);
+            }
+            return entity;
         }
     }
 }

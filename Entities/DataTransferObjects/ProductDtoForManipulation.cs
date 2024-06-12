@@ -24,5 +24,6 @@ namespace Entities.DataTransferObjects
 
         [Required(ErrorMessage = "Stok Adedi Boş Geçilemez ")]
         public int Stok { get; set; }
+        
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\Entities\\Entities.csproj": {}
+    "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\Entities\\Entities.csproj": {
+    "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\enkoc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\StoreApi\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\enkoc\\AppData\\Roaming\\NuGet\\NuGet.Config",

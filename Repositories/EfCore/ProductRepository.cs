@@ -1,4 +1,6 @@
 ﻿using Entities.Models;
+using Entities.RequestFeatures;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 using System;
 using System.Collections.Generic;
@@ -8,23 +10,32 @@ using System.Threading.Tasks;
 
 namespace Repositories.EfCore
 {
-    public class ProductRepository : RepositoryBase<Products>, IProductRepository
+    public sealed class ProductRepository : RepositoryBase<Products>, IProductRepository
     {
         public ProductRepository(RepositoryContext context) : base(context)
         {
 
         }
-        void IProductRepository.CreateOneProduct(Products products) => Create(products);
+        public void CreateOneProduct(Products products) => Create(products);
 
-        void IProductRepository.DeleteOneProduct(Products products) => Delete(products);
+        public void DeleteOneProduct(Products products) => Delete(products);
 
-        IQueryable<Products> IProductRepository.GetAllProduct(bool trackChanges) =>
-            FindAll(trackChanges).OrderBy(x => x.Id);
+        public async Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters, bool trackChanges)
+        {
+            var products = await FindAll(trackChanges)
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .OrderBy(x => x.ProductId)
+            .ToListAsync();
 
-        Products IProductRepository.GetOneProductById(int id, bool trackChanges) =>
-             FindByCondition(x => x.Id == id, trackChanges).SingleOrDefault();
+            return PagedList<Products>.ToPagedList(products,
+                productParameters.PageNumber,
+                productParameters.PageSize);
+        }
 
-        void IProductRepository.UpdateOneProduct(Products products) => Update(products);
+        public async Task<Products> GetOneProductByIdAync(int id, bool trackChanges) =>
+             await FindByCondition(x => x.ProductId == id, trackChanges).SingleOrDefaultAsync();
+
+        public void UpdateOneProduct(Products products) => Update(products);
 
     }
 }

@@ -8,7 +8,7 @@ namespace StoreApi.Utilities.AutoMapper
     {
         public MappingProfile()
         {
-            CreateMap<ProductDtoForUpdate, Products>();
+            CreateMap<ProductDtoForUpdate, Products>().ReverseMap();
             CreateMap<Products,ProductDto>();
             CreateMap<ProductDtoForInsertion, Products>();
         }

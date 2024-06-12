@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Presentation.ActionFilters;
 using Repositories.Contracts;
 using Repositories.EfCore;
 using Services;
@@ -29,6 +30,24 @@ namespace StoreApi.Extensions
         public static void ConfigureLoggerSerciesManager(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerService,LoggerManager>();
+        }
+        public static void ConfigureActionFilters(this IServiceCollection services)
+        {
+            services.AddScoped<ValidationFilterAttribute>();
+            services.AddSingleton<LogFilterAttribute>();
+        }
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(option =>
+            {
+                option.AddPolicy("CorsPolicy", builder =>
+                
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("X-Pagination")
+                );
+            });
         }
     }
 }

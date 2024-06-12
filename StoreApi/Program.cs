@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLog;
+using Presentation.ActionFilters;
 using Repositories.EfCore;
 using Services.Contracts;
 using StoreApi.Extensions;
@@ -36,12 +38,24 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServicesManager();
 builder.Services.ConfigureLoggerSerciesManager();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.ConfigureActionFilters();
+builder.Services.ConfigureCors();
+
 /*
+ * 
 builder.Services.AddDbContext<RepositoryContext>(option =>
 {
     option.UseMySQL(builder.Configuration.GetConnectionString("MysqlConnection"));
 });
 */
+
+
+//ModelState 
+builder.Services.Configure<ApiBehaviorOptions>(option =>
+{
+    option.SuppressModelStateInvalidFilter = true;
+});
+
 
 var app = builder.Build();
 
@@ -65,6 +79,8 @@ if (app.Environment.IsProduction())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 

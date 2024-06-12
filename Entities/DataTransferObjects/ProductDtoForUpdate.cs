@@ -12,7 +12,7 @@ namespace Entities.DataTransferObjects
 {
     public record ProductDtoForUpdate:ProductDtoForManipulation
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
 
 
     }
