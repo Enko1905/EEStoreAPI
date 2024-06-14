@@ -10,7 +10,7 @@ namespace Entities.RequestFeatures
     {
         const int maxPageSize = 50;
         public int PageNumber { get; set; }
-        private int _pageSize;
+        private int _pageSize= 40;
 
         public int PageSize
         {

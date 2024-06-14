@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NLog;
 using Presentation.ActionFilters;
 using Repositories.EfCore;
@@ -21,7 +22,11 @@ builder.Services.AddControllers(config =>
 })
 
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
-    .AddNewtonsoftJson()
+    .AddNewtonsoftJson(option =>
+    { 
+        option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+    })
     .AddCustomCsvFormatter()
     .AddXmlDataContractSerializerFormatters();
 

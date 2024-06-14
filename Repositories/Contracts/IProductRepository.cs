@@ -16,5 +16,8 @@ namespace Repositories.Contracts
         void UpdateOneProduct(Products products);
         void DeleteOneProduct(Products products);
 
+        Task<PagedList<Products>> GetAllProductWithAttributeAsync(ProductParameters productParameters, bool trackChanges);
+        Task<Products> GetOneProductWithAttributeAsync(int id ,bool trackChanges);
+
     }
 }

@@ -32,8 +32,42 @@ namespace Repositories.EfCore
                 productParameters.PageSize);
         }
 
+        public async Task<PagedList<Products>> GetAllProductWithAttributeAsync(ProductParameters productParameters, bool trackChanges)
+        {
+            var products = await FindAll(trackChanges)
+                .Include(p => p.ProductAttributes)
+                .Include(p => p.productCustomAttributes)
+                .Include(p => p.productVariants)
+                    .ThenInclude(c => c.Color)
+                .Include(p => p.productVariants)
+                    .ThenInclude(c => c.Size)
+
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .OrderBy(x => x.ProductId)
+            .ToListAsync();
+
+
+
+            return PagedList<Products>.ToPagedList(products,
+                productParameters.PageNumber,
+                productParameters.PageSize);
+        }
+
         public async Task<Products> GetOneProductByIdAync(int id, bool trackChanges) =>
              await FindByCondition(x => x.ProductId == id, trackChanges).SingleOrDefaultAsync();
+
+        public async Task<Products> GetOneProductWithAttributeAsync(int id, bool trackChanges)
+        {
+            var products = await FindAll(trackChanges)
+                .Include(p => p.ProductAttributes)
+                .Include(p => p.productCustomAttributes)
+                .Include(p => p.productVariants)
+                    .ThenInclude(c => c.Color)
+                .Include(p => p.productVariants)
+                    .ThenInclude(c => c.Size)
+            .FirstOrDefaultAsync(a=>a.ProductId.Equals(id));
+            return products;
+        }
 
         public void UpdateOneProduct(Products products) => Update(products);
 

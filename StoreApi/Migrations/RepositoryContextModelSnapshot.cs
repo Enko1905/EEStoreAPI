@@ -61,7 +61,7 @@ namespace StoreApi.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<int?>("MainCategoryId")
+                    b.Property<int>("MainCategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("MetaDescription")
@@ -173,18 +173,15 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MetaDescription")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("varchar(300)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MetaTitle")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -226,9 +223,6 @@ namespace StoreApi.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -239,7 +233,7 @@ namespace StoreApi.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductsProductId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
                 });
@@ -281,12 +275,9 @@ namespace StoreApi.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsProductId")
-                        .HasColumnType("int");
-
                     b.HasKey("ProductCustomId");
 
-                    b.HasIndex("ProductsProductId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductCustomAttributes");
                 });
@@ -303,12 +294,9 @@ namespace StoreApi.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsProductId")
-                        .HasColumnType("int");
-
                     b.HasKey("ProductImageId");
 
-                    b.HasIndex("ProductsProductId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
                 });
@@ -319,12 +307,14 @@ namespace StoreApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(5000)
+                        .HasColumnType("varchar(5000)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -361,9 +351,6 @@ namespace StoreApi.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SKU")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -379,7 +366,7 @@ namespace StoreApi.Migrations
 
                     b.HasIndex("ColorId");
 
-                    b.HasIndex("ProductsProductId");
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("SizeId");
 
@@ -487,7 +474,9 @@ namespace StoreApi.Migrations
                 {
                     b.HasOne("Entities.Models.MainCategory", null)
                         .WithMany("Category")
-                        .HasForeignKey("MainCategoryId");
+                        .HasForeignKey("MainCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Entities.Models.CategoryDifferents", b =>
@@ -533,7 +522,7 @@ namespace StoreApi.Migrations
 
                     b.HasOne("Entities.Models.Products", "Products")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("ProductsProductId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -557,7 +546,7 @@ namespace StoreApi.Migrations
                 {
                     b.HasOne("Entities.Models.Products", "Products")
                         .WithMany("productCustomAttributes")
-                        .HasForeignKey("ProductsProductId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -567,8 +556,8 @@ namespace StoreApi.Migrations
             modelBuilder.Entity("Entities.Models.ProductImage", b =>
                 {
                     b.HasOne("Entities.Models.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductsProductId")
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -604,7 +593,7 @@ namespace StoreApi.Migrations
 
                     b.HasOne("Entities.Models.Products", "Products")
                         .WithMany("productVariants")
-                        .HasForeignKey("ProductsProductId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -624,7 +613,7 @@ namespace StoreApi.Migrations
             modelBuilder.Entity("Entities.Models.SubCategory", b =>
                 {
                     b.HasOne("Entities.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("SubCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -635,6 +624,8 @@ namespace StoreApi.Migrations
             modelBuilder.Entity("Entities.Models.Category", b =>
                 {
                     b.Navigation("Products");
+
+                    b.Navigation("SubCategories");
                 });
 
             modelBuilder.Entity("Entities.Models.City", b =>
@@ -662,6 +653,8 @@ namespace StoreApi.Migrations
                     b.Navigation("OrderDetails");
 
                     b.Navigation("ProductAttributes");
+
+                    b.Navigation("ProductImages");
 
                     b.Navigation("productCustomAttributes");
 

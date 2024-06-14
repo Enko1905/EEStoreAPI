@@ -34,6 +34,21 @@ namespace Presentation.Controllers
 
             return Ok(pagedResult.Item1);
         }
+        [HttpGet("GetAllWithAttiribute")]
+        public async Task<IActionResult> GetAllWithAttributeProductAsync([FromQuery] ProductParameters productParameters)
+        {
+            var pagedResult = await _manager.ProductService.GetAllProductWithAttiributeAsync(productParameters, false);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+
+            return Ok(pagedResult.Item1);
+        }
+        [HttpGet("GetOneWithAttiribute/{id:int}")]
+        public async Task<IActionResult> GetOneWithAttributeProductAsync([FromRoute] int id)
+        {
+            var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
+
+            return Ok(entity);
+        }
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneProductAsync([FromRoute(Name = "id")] int id)
         {

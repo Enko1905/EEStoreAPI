@@ -26,4 +26,6 @@ namespace Entities.DataTransferObjects
         public int Stok { get; set; }
         
     }
+
+
 }

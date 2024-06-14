@@ -13,7 +13,7 @@ namespace Entities.Models
         public int OrderId { get; set; }
         public Order Order { get; set; }
 
-        [ForeignKey("Product")]
+        [ForeignKey("Products")]
         public int ProductId { get; set; }
         public Products Products { get; set; }
 

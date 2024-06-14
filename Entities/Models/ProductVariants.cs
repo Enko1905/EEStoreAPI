@@ -9,7 +9,7 @@ namespace Entities.Models
         public int VariantId { get; set; }
 
 
-        [ForeignKey("Product")]
+        [ForeignKey("Products")]
         public int ProductId { get; set; }
         public Products Products { get; set; }
 
