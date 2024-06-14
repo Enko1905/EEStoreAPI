@@ -38,6 +38,8 @@ namespace Repositories.EfCore
         public DbSet<ProductCustomAttributes> ProductCustomAttributes { get; set; }   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           // base.OnModelCreating(modelBuilder);
+           
             // Veritabanındaki sütun adını belirtin
             //base.OnModelCreating(modelBuilder);
 

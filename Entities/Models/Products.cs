@@ -14,15 +14,14 @@ namespace Entities.Models
         [Key]
         public int ProductId { get; set; }
 
-        [Required, MaxLength(100)]
+        [MaxLength(100)]
         public string ProductName { get; set; }
 
-        [Required]
         public decimal Price { get; set; }
 
-        [Required]
         public int Stock { get; set; }
 
+        [MaxLength(5000)]
         public string Description { get; set; }
 
         [ForeignKey("SubCategory")]
@@ -31,11 +30,10 @@ namespace Entities.Models
 
 
         [ForeignKey("Category")]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public Category Category { get; set; }
-
-
-        public List<ProductAttribute> ProductAttributes { get; set; }
+        public ICollection<ProductImage> ProductImages { get; set; }
+        public ICollection<ProductAttribute> ProductAttributes { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
         public ICollection<ProductCustomAttributes> productCustomAttributes { get; set; }
         public ICollection<ProductVariants> productVariants { get; set; }

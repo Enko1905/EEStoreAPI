@@ -11,6 +11,10 @@ namespace Services.Contracts
     public interface IProductService
     {
         Task<(IEnumerable<ProductDto>,MetaData metaData)> GetAllProductAsync(ProductParameters productParameters, bool trachChanges);
+
+        Task<(ICollection<ProductDto>, MetaData metaData)> GetAllProductWithAttiributeAsync(ProductParameters productParameters, bool trachChanges);
+
+
         Task<ProductDto> GetOneProductByIdAsync(int id, bool trackChanges);
         Task<ProductDto> CreateOneProductAsync(ProductDtoForInsertion products);
         Task UpdateOneProductAsync(int id, ProductDtoForUpdate productsDto);
@@ -18,6 +22,7 @@ namespace Services.Contracts
         Task<(ProductDtoForUpdate productDtoForUpdate, Products products)> GetOneProductForPatchAsync(int id, bool trachChanges);
     
         Task SaveChangesForPatchAsync(ProductDtoForUpdate productDtoForUpdate, Products products);
-        
+        Task<ProductDto> GetOneProductWithAttributeAsync(int id, bool trackChanges);
+
     }
 }

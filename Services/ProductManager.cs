@@ -98,5 +98,24 @@ namespace Services
             }
             return entity;
         }
+
+        public async Task<(ICollection<ProductDto>, MetaData metaData)> GetAllProductWithAttiributeAsync(ProductParameters productParameters, bool trachChanges)
+        {
+            if (!productParameters.ValidPriceRange)
+                throw new PriceOutofRangeBadRequestException();
+
+            var productWithsMetaData = await _manager.Product
+                .GetAllProductWithAttributeAsync(productParameters, trachChanges);
+            var productDto = _mapper.Map<ICollection<ProductDto>>(productWithsMetaData);
+            return (productDto, productWithsMetaData.MetaData);
+        }
+
+        public async Task<ProductDto> GetOneProductWithAttributeAsync(int id, bool trackChanges)
+        {
+            var entity = await _manager.Product
+                .GetOneProductWithAttributeAsync(id,trackChanges);
+
+            return _mapper.Map<ProductDto>(entity); 
+        }
     }
 }
