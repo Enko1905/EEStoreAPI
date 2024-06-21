@@ -21,7 +21,7 @@ namespace Presentation.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IServiceManager _manager;
-
+    
         public ProductController(IServiceManager manager)
         {
             _manager = manager;
@@ -29,11 +29,12 @@ namespace Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllProductAsync([FromQuery] ProductParameters productParameters)
         {
-            var pagedResult = await _manager.ProductService.GetAllProductAsync(productParameters, false);
+            //var pagedResult = await _manager.ProductService.GetAllProductAsync(productParameters, false);
+            var pagedResult = await _manager.ProductService.GetAllProductWithAttiributeAsync(productParameters, false);
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
 
             return Ok(pagedResult.Item1);
-        }
+        }/*
         [HttpGet("GetAllWithAttiribute")]
         public async Task<IActionResult> GetAllWithAttributeProductAsync([FromQuery] ProductParameters productParameters)
         {
@@ -41,19 +42,21 @@ namespace Presentation.Controllers
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
 
             return Ok(pagedResult.Item1);
-        }
+        }*/
+/*
         [HttpGet("GetOneWithAttiribute/{id:int}")]
         public async Task<IActionResult> GetOneWithAttributeProductAsync([FromRoute] int id)
         {
             var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
 
             return Ok(entity);
-        }
+        }*/
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneProductAsync([FromRoute(Name = "id")] int id)
         {
-            var book = await _manager.ProductService.GetOneProductByIdAsync(id, false);
-            return Ok(book);
+            // var entity = await _manager.ProductService.GetOneProductByIdAsync(id, false);
+            var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
+            return Ok(entity);
         }
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
@@ -68,16 +71,44 @@ namespace Presentation.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneProductAsync([FromRoute(Name = "id")] int id, [FromBody] ProductDtoForUpdate productsDto)
         {
-            var entity = await _manager.ProductService.GetOneProductByIdAsync(id, false);
+            // var entity = await _manager.ProductService.GetOneProductByIdAsync(id, false);
+          
             await _manager.ProductService.UpdateOneProductAsync(id, productsDto);
-            return NoContent();
+
+            var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
+
+            
+            if(productsDto is not null)
+            {
+                foreach (var attributes in entity.ProductAttributes.ToList())
+                {
+                    if (!productsDto.ProductAttributes.Any(x => x.ProductAttributeId == attributes.ProductAttributeId))
+                    {
+                        await _manager.ProductAttributeService.DeleteProductAttribute(attributes.ProductAttributeId);
+                    }
+                }
+                foreach(var variants in entity.productVariants.ToList())
+                {
+                    if(!productsDto.productVariants.Any(x=>x.VariantId == variants.VariantId))
+                    {
+                        await _manager.ProductVariantService.DeleteOneProductVariants(variants.VariantId,false);
+                    }
+                }
+            }
+
+
+
+            return NoContent(); 
         }
+        
+        
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneProductAsync([FromRoute] int id)
         {
             await _manager.ProductService.DeleteOneProductAsync(id, false);
             return NoContent();
         }
+
 
         [HttpPatch("{id:int}")]
         public async Task<IActionResult> PartiallyUpdateOneProductAsync([FromRoute(Name = "id")] int id,

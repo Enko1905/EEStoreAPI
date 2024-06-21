@@ -12,5 +12,7 @@ namespace Services.Contracts
         ICategoryService CategoryService { get; }
         IMainCategoryService MainCategoryService { get; }
         ISubCategoryService SubCategoryService { get; }
+        IProductAttributeService ProductAttributeService { get; }
+        IProductVariantService ProductVariantService { get; }
     }
 }

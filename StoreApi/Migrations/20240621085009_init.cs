@@ -19,7 +19,7 @@ namespace StoreApi.Migrations
                 {
                     CityId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    CityName = table.Column<string>(type: "longtext", nullable: false),
+                    CityName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     PlateCode = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
@@ -34,8 +34,8 @@ namespace StoreApi.Migrations
                 {
                     ColorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    ColorName = table.Column<string>(type: "longtext", nullable: false),
-                    ColorCode = table.Column<string>(type: "longtext", nullable: true)
+                    ColorName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    ColorCode = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,10 +49,10 @@ namespace StoreApi.Migrations
                 {
                     MainCategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MetaTitle = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
+                    MetaTitle = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    MetaDescription = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,7 +66,7 @@ namespace StoreApi.Migrations
                 {
                     SizeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    SizeName = table.Column<string>(type: "longtext", nullable: false)
+                    SizeName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,7 +96,7 @@ namespace StoreApi.Migrations
                 {
                     CityDistrictsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    DistrictsName = table.Column<string>(type: "longtext", nullable: false),
+                    DistrictsName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -117,11 +117,11 @@ namespace StoreApi.Migrations
                 {
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    MainCategoryId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
                     MetaTitle = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    MainCategoryId = table.Column<int>(type: "int", nullable: true)
+                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -130,7 +130,8 @@ namespace StoreApi.Migrations
                         name: "FK_Categories_MainCategories_MainCategoryId",
                         column: x => x.MainCategoryId,
                         principalTable: "MainCategories",
-                        principalColumn: "MainCategoryId");
+                        principalColumn: "MainCategoryId",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -214,11 +215,15 @@ namespace StoreApi.Migrations
                 {
                     ProductId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    ProductName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    ProductName = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Stock = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "longtext", nullable: false),
+                    Stock = table.Column<uint>(type: "int unsigned", nullable: true),
+                    Description = table.Column<string>(type: "varchar(2500)", maxLength: 2500, nullable: false),
                     SubCategoryId = table.Column<int>(type: "int", nullable: false),
+                    ImageUrl = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    SKU = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true),
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    variousProduct = table.Column<bool>(type: "tinyint(1)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -247,7 +252,7 @@ namespace StoreApi.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(type: "int", nullable: false),
                     ProductsProductId = table.Column<int>(type: "int", nullable: false),
-                    CategoryName = table.Column<string>(type: "longtext", nullable: false)
+                    CategoryName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -269,7 +274,6 @@ namespace StoreApi.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    ProductsProductId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
@@ -283,8 +287,8 @@ namespace StoreApi.Migrations
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Products_ProductsProductId",
-                        column: x => x.ProductsProductId,
+                        name: "FK_OrderDetails_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
@@ -297,8 +301,8 @@ namespace StoreApi.Migrations
                 {
                     ProductAttributeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Type = table.Column<string>(type: "longtext", nullable: false),
-                    Value = table.Column<string>(type: "longtext", nullable: false),
+                    Type = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Value = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -314,43 +318,20 @@ namespace StoreApi.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ProductCustomAttributes",
-                columns: table => new
-                {
-                    ProductCustomId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    ProductsProductId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductCustomAttributes", x => x.ProductCustomId);
-                    table.ForeignKey(
-                        name: "FK_ProductCustomAttributes_Products_ProductsProductId",
-                        column: x => x.ProductsProductId,
-                        principalTable: "Products",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "ProductImages",
                 columns: table => new
                 {
                     ProductImageId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    ImageUrl = table.Column<string>(type: "longtext", nullable: true),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    ProductsProductId = table.Column<int>(type: "int", nullable: false)
+                    ImageUrl = table.Column<string>(type: "varchar(800)", maxLength: 800, nullable: true),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProductImages", x => x.ProductImageId);
                     table.ForeignKey(
-                        name: "FK_ProductImages_Products_ProductsProductId",
-                        column: x => x.ProductsProductId,
+                        name: "FK_ProductImages_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
@@ -364,11 +345,9 @@ namespace StoreApi.Migrations
                     VariantId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    ProductsProductId = table.Column<int>(type: "int", nullable: false),
-                    ColorId = table.Column<int>(type: "int", nullable: false),
-                    SizeId = table.Column<int>(type: "int", nullable: false),
-                    SKU = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    StockQuantity = table.Column<int>(type: "int", nullable: false)
+                    ColorId = table.Column<int>(type: "int", nullable: true),
+                    SizeId = table.Column<int>(type: "int", nullable: true),
+                    Stock = table.Column<uint>(type: "int unsigned", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -377,11 +356,10 @@ namespace StoreApi.Migrations
                         name: "FK_ProductVariants_Colors_ColorId",
                         column: x => x.ColorId,
                         principalTable: "Colors",
-                        principalColumn: "ColorId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ColorId");
                     table.ForeignKey(
-                        name: "FK_ProductVariants_Products_ProductsProductId",
-                        column: x => x.ProductsProductId,
+                        name: "FK_ProductVariants_Products_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
@@ -389,7 +367,35 @@ namespace StoreApi.Migrations
                         name: "FK_ProductVariants_Sizes_SizeId",
                         column: x => x.SizeId,
                         principalTable: "Sizes",
-                        principalColumn: "SizeId",
+                        principalColumn: "SizeId");
+                })
+                .Annotation("MySQL:Charset", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "productCustomVariants",
+                columns: table => new
+                {
+                    ProductCustomVariantId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Stock = table.Column<uint>(type: "int unsigned", maxLength: 2147483647, nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    VariantId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_productCustomVariants", x => x.ProductCustomVariantId);
+                    table.ForeignKey(
+                        name: "FK_productCustomVariants_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_productCustomVariants_ProductVariants_VariantId",
+                        column: x => x.VariantId,
+                        principalTable: "ProductVariants",
+                        principalColumn: "VariantId",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -425,9 +431,9 @@ namespace StoreApi.Migrations
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_ProductsProductId",
+                name: "IX_OrderDetails_ProductId",
                 table: "OrderDetails",
-                column: "ProductsProductId");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
@@ -440,14 +446,19 @@ namespace StoreApi.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCustomAttributes_ProductsProductId",
-                table: "ProductCustomAttributes",
-                column: "ProductsProductId");
+                name: "IX_productCustomVariants_ProductId",
+                table: "productCustomVariants",
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductImages_ProductsProductId",
+                name: "IX_productCustomVariants_VariantId",
+                table: "productCustomVariants",
+                column: "VariantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProductImages_ProductId",
                 table: "ProductImages",
-                column: "ProductsProductId");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
@@ -465,9 +476,9 @@ namespace StoreApi.Migrations
                 column: "ColorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductVariants_ProductsProductId",
+                name: "IX_ProductVariants_ProductId",
                 table: "ProductVariants",
-                column: "ProductsProductId");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductVariants_SizeId",
@@ -495,19 +506,25 @@ namespace StoreApi.Migrations
                 name: "ProductAttributes");
 
             migrationBuilder.DropTable(
-                name: "ProductCustomAttributes");
+                name: "productCustomVariants");
 
             migrationBuilder.DropTable(
                 name: "ProductImages");
-
-            migrationBuilder.DropTable(
-                name: "ProductVariants");
 
             migrationBuilder.DropTable(
                 name: "CityDistricts");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "ProductVariants");
+
+            migrationBuilder.DropTable(
+                name: "Cities");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Colors");
@@ -517,12 +534,6 @@ namespace StoreApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sizes");
-
-            migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "SubCategories");

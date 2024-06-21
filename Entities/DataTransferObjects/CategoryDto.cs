@@ -20,6 +20,7 @@ namespace Entities.DataTransferObjects
         public string Description { get; init; }
 
         public string MetaTitle { get; init; }
+        public bool CategoryStasus { get; init; }
 
         public string MetaDescription { get; init; }
 
@@ -45,6 +46,7 @@ namespace Entities.DataTransferObjects
 
         [MaxLength(300, ErrorMessage = "Meta açıklama en fazla 300 karakter olabilir.")]
         public string MetaDescription { get; set; }
+        public bool? CategoryStasus { get; set; }
 
     }
     public record CategoryDtoForUpdate : CategoryDtoForManipulation

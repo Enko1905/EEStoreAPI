@@ -36,11 +36,10 @@ namespace Repositories.EfCore
         {
             var products = await FindAll(trackChanges)
                 .Include(p => p.ProductAttributes)
-                .Include(p => p.productCustomAttributes)
+                .Include(p => p.ProductImages)
                 .Include(p => p.productVariants)
                     .ThenInclude(c => c.Color)
                 .Include(p => p.productVariants)
-                    .ThenInclude(c => c.Size)
 
             .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
             .OrderBy(x => x.ProductId)
@@ -60,12 +59,11 @@ namespace Repositories.EfCore
         {
             var products = await FindAll(trackChanges)
                 .Include(p => p.ProductAttributes)
-                .Include(p => p.productCustomAttributes)
+                .Include(p => p.ProductImages)
                 .Include(p => p.productVariants)
                     .ThenInclude(c => c.Color)
                 .Include(p => p.productVariants)
-                    .ThenInclude(c => c.Size)
-            .FirstOrDefaultAsync(a=>a.ProductId.Equals(id));
+            .FirstOrDefaultAsync(a => a.ProductId==id);
             return products;
         }
 

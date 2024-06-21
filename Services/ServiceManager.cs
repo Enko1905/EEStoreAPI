@@ -15,12 +15,16 @@ namespace Services
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<IMainCategoryService> _mainCategoryService;
         private readonly Lazy<ISubCategoryService> _subCategoryService;
+        private readonly Lazy<IProductAttributeService> _productAttributeService;
+        private readonly Lazy<IProductVariantService> _productVariantService;   
         public ServiceManager(IRepositoryManager repositoryManager, ILoggerService logger, IMapper mapper)
         {
             _productService = new Lazy<IProductService>(() => new ProductManager(repositoryManager, logger, mapper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager, mapper));
             _mainCategoryService = new Lazy<IMainCategoryService>(() => new MainCategoryManager(repositoryManager, mapper));
             _subCategoryService = new Lazy<ISubCategoryService>(() => new SubCategoryManager(repositoryManager, mapper));
+            _productAttributeService = new Lazy<IProductAttributeService>(() => new ProductAttributeManager(repositoryManager, mapper));
+            _productVariantService = new Lazy<IProductVariantService>(() => new ProductVariantManager(repositoryManager, mapper));
         }
         public IProductService ProductService => _productService.Value;
 
@@ -29,5 +33,9 @@ namespace Services
         public IMainCategoryService MainCategoryService => _mainCategoryService.Value;
 
         public ISubCategoryService SubCategoryService => _subCategoryService.Value;
+
+        public IProductAttributeService ProductAttributeService => _productAttributeService.Value;
+
+        public IProductVariantService ProductVariantService => _productVariantService.Value;
     }
 }

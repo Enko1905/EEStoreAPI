@@ -16,8 +16,8 @@ namespace Services
 {
     public class CategoryManager : ICategoryService
     {
-        IRepositoryManager _manager;
-        IMapper _mapper;
+       private readonly IRepositoryManager _manager;
+       private readonly IMapper _mapper;
         public CategoryManager(IRepositoryManager repositoryManager, IMapper mapper)
         {
             _manager = repositoryManager;
@@ -27,6 +27,8 @@ namespace Services
         public async Task<CategoryDto> CreateOneCategoryAsync(CategoryDtoForInsertion CategoryDto)
         {
             var entity = _mapper.Map<Category>(CategoryDto);
+
+           
             _manager.Category.Create(entity);
             await _manager.SaveAsync();
             return _mapper.Map<CategoryDto>(entity);

@@ -14,20 +14,26 @@ namespace Entities.Models
         [Key]
         public int ProductId { get; set; }
 
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string ProductName { get; set; }
-
         public decimal Price { get; set; }
 
-        public int Stock { get; set; }
+        public uint? Stock { get; set; }
 
-        [MaxLength(5000)]
+    
+
+        [MaxLength(2500)]
         public string Description { get; set; }
 
         [ForeignKey("SubCategory")]
         public int SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
-
+        [MaxLength(500)]
+        public string ImageUrl { get; set; }
+        [MaxLength(150)]
+        public string? SKU { get; set; }
+        public bool Status { get; set; }
+        public bool? variousProduct { get; set; } = false;
 
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }
@@ -35,7 +41,6 @@ namespace Entities.Models
         public ICollection<ProductImage> ProductImages { get; set; }
         public ICollection<ProductAttribute> ProductAttributes { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
-        public ICollection<ProductCustomAttributes> productCustomAttributes { get; set; }
         public ICollection<ProductVariants> productVariants { get; set; }
     }
 }
