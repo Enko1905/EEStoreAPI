@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
@@ -7,8 +8,11 @@ namespace Entities.Models
     public class ProductAttribute
     {
         public int ProductAttributeId { get; set; }
+
+        [MaxLength(50)]
         public string Type { get; set; }
 
+        [MaxLength(150)]
         public string Value { get; set; }
 
         [ForeignKey("Product")]

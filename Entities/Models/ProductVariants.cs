@@ -14,18 +14,15 @@ namespace Entities.Models
         public Products Products { get; set; }
 
         [ForeignKey("Color")]
-        public int ColorId { get; set; }
-        public Color Color { get; set; }
-
+        public int? ColorId { get; set; }
+        public Color? Color { get; set; }
 
         [ForeignKey("Size")]
-        public int SizeId { get; set; }
+        public int? SizeId { get; set; }
+        public Size? Size { get; set; }
+        public uint Stock { get; set;}  
 
-        [Required, MaxLength(100)]
-        public string SKU { get; set; }
 
-        public Size Size { get; set; }
-        public int StockQuantity { get; set; }
     }
 
 }

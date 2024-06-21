@@ -8,6 +8,7 @@ namespace Entities.Models
     {
         [Key]
         public int ProductImageId { get; set; }
+        [MaxLength(800)]
         public string? ImageUrl { get; set; }
 
         [ForeignKey("Products")]

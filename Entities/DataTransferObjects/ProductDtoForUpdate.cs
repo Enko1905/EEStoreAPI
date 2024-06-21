@@ -13,7 +13,11 @@ namespace Entities.DataTransferObjects
     public record ProductDtoForUpdate:ProductDtoForManipulation
     {
         public int ProductId { get; set; }
+        
+        public ICollection<ProductImageDto>? ProductImages { get; set; }
 
+        public ICollection<ProductAttributeDto>? ProductAttributes { get; set; }
+        public ICollection<ProductVariantDto>? productVariants { get; set; }
 
     }
 

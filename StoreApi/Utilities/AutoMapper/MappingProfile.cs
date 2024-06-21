@@ -11,7 +11,6 @@ namespace StoreApi.Utilities.AutoMapper
             //Product Map
             CreateMap<ProductDtoForUpdate, Products>().ReverseMap();
             CreateMap<Products, ProductDto>().ReverseMap();
-
             CreateMap<ProductDtoForInsertion, Products>();
 
 
@@ -36,9 +35,11 @@ namespace StoreApi.Utilities.AutoMapper
 
             //ProductAttribute
             CreateMap<ProductAttribute, ProductAttributeDto>().ReverseMap();
+            CreateMap<ProductAttributeDtoForUpdate, ProductAttribute>();
+            CreateMap<ProductAttributeDtoForInsert, ProductAttribute>();
 
             //ProductCustomAttribute
-            CreateMap<ProductCustomAttributeDto, ProductCustomAttributes>().ReverseMap();
+            CreateMap<ProductCustomVariantDto, ProductCustomVariants>().ReverseMap();
 
 
             //Color
@@ -46,6 +47,15 @@ namespace StoreApi.Utilities.AutoMapper
 
             //Size
             CreateMap<SizeDto, Size>().ReverseMap();
+
+            //ProductImage
+            CreateMap<ProductImageDto, ProductImage>().ReverseMap();
+
+            //ProductVariants
+            CreateMap<ProductVariants,ProductVariantDto>().ReverseMap();
+            CreateMap<ProductVariantsDtoForUpdate, ProductVariants>();
+            CreateMap<ProductVariantsDtoForInsert, ProductVariants>();  
+            
         }
     }
 }

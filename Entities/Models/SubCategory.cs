@@ -23,6 +23,8 @@ namespace Entities.Models
 
         [MaxLength(300)]
         public string MetaDescription { get; set; }
+        public bool? SubCategoryStasus { get; set; } = true;
+
         public ICollection<Products> Products { get; set; }
     }
 

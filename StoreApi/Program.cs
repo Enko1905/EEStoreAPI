@@ -42,7 +42,9 @@ builder.Services.ConfigureMysqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServicesManager();
 builder.Services.ConfigureLoggerSerciesManager();
+
 builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 
@@ -73,6 +75,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
 }
 
 /*

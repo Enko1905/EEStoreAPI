@@ -8,6 +8,8 @@ namespace Entities.Models
     {
         [Key]
         public int CityDistrictsId { get; set; }
+
+        [MaxLength(100)]
         public string DistrictsName { get; set; }
         [ForeignKey("City")]
         public int CityId { get; set; }

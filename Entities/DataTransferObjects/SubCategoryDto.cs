@@ -18,7 +18,7 @@ namespace Entities.DataTransferObjects
 
         public int CategoryId { get; init; }
         public string Description { get; init; }
-
+        public bool SubCategoryStasus { get; init; }
         public string MetaTitle { get; init; }
         public string MetaDescription { get; init; }
     }
@@ -40,6 +40,7 @@ namespace Entities.DataTransferObjects
 
         [MaxLength(300, ErrorMessage = "Meta açıklama en fazla 300 karakter olabilir.")]
         public string MetaDescription { get; set; }
+        public bool? SubCategoryStasus { get; set; }
     }
     public record SubCategoryDtoForInsert :SubCategoryDtoForManipulation { 
     } 

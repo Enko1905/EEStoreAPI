@@ -10,6 +10,8 @@ namespace Entities.Models
         [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Products Products { get; set; }
+
+        [MaxLength(100)]
         public string CategoryName { get; set; }
     }
 

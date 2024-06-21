@@ -12,7 +12,8 @@ namespace Repositories.Contracts
         ICategoryRepository Category { get; }
         IMainCategoryRepository MainCategory { get; }
         ISubCategoryRepository SubCategory { get; }
-
+        IProductAttributeRepository ProductAttribute { get; }
+        IProductVariantRepository ProductVariant { get; }
         Task SaveAsync();
 
     }

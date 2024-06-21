@@ -56,6 +56,9 @@ namespace StoreApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<bool>("CategoryStasus")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -94,7 +97,8 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -117,7 +121,8 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("CityName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("PlateCode")
                         .HasColumnType("longtext");
@@ -138,7 +143,8 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("DistrictsName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("CityDistrictsId");
 
@@ -154,11 +160,13 @@ namespace StoreApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ColorCode")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("ColorName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("ColorId");
 
@@ -173,19 +181,26 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<bool?>("MainCategoryStasus")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("MetaDescription")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("MetaTitle")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("MainCategoryId");
 
@@ -249,11 +264,13 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Value")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.HasKey("ProductAttributeId");
 
@@ -262,24 +279,34 @@ namespace StoreApi.Migrations
                     b.ToTable("ProductAttributes");
                 });
 
-            modelBuilder.Entity("Entities.Models.ProductCustomAttributes", b =>
+            modelBuilder.Entity("Entities.Models.ProductCustomVariants", b =>
                 {
-                    b.Property<int>("ProductCustomId")
+                    b.Property<int>("ProductCustomVariantId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductCustomId");
+                    b.Property<uint>("Stock")
+                        .HasMaxLength(2147483647)
+                        .HasColumnType("int unsigned");
+
+                    b.Property<int>("VariantId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductCustomVariantId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductCustomAttributes");
+                    b.HasIndex("VariantId");
+
+                    b.ToTable("productCustomVariants");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductImage", b =>
@@ -289,7 +316,8 @@ namespace StoreApi.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("longtext");
+                        .HasMaxLength(800)
+                        .HasColumnType("varchar(800)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -313,22 +341,37 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("varchar(5000)");
+                        .HasMaxLength(2500)
+                        .HasColumnType("varchar(2500)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("varchar(500)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
 
-                    b.Property<int>("Stock")
-                        .HasColumnType("int");
+                    b.Property<string>("SKU")
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<uint?>("Stock")
+                        .HasColumnType("int unsigned");
 
                     b.Property<int>("SubCategoryId")
                         .HasColumnType("int");
+
+                    b.Property<bool?>("variousProduct")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("ProductId");
 
@@ -345,22 +388,17 @@ namespace StoreApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ColorId")
+                    b.Property<int?>("ColorId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SKU")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<int>("SizeId")
+                    b.Property<int?>("SizeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StockQuantity")
-                        .HasColumnType("int");
+                    b.Property<uint>("Stock")
+                        .HasColumnType("int unsigned");
 
                     b.HasKey("VariantId");
 
@@ -381,7 +419,8 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("SizeName")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.HasKey("SizeId");
 
@@ -417,6 +456,9 @@ namespace StoreApi.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<bool?>("SubCategoryStasus")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("SubCategoryId");
 
@@ -542,15 +584,23 @@ namespace StoreApi.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Entities.Models.ProductCustomAttributes", b =>
+            modelBuilder.Entity("Entities.Models.ProductCustomVariants", b =>
                 {
                     b.HasOne("Entities.Models.Products", "Products")
-                        .WithMany("productCustomAttributes")
+                        .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Entities.Models.ProductVariants", "productVariants")
+                        .WithMany()
+                        .HasForeignKey("VariantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Products");
+
+                    b.Navigation("productVariants");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductImage", b =>
@@ -587,9 +637,7 @@ namespace StoreApi.Migrations
                 {
                     b.HasOne("Entities.Models.Color", "Color")
                         .WithMany("ProductVariants")
-                        .HasForeignKey("ColorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ColorId");
 
                     b.HasOne("Entities.Models.Products", "Products")
                         .WithMany("productVariants")
@@ -599,9 +647,7 @@ namespace StoreApi.Migrations
 
                     b.HasOne("Entities.Models.Size", "Size")
                         .WithMany("ProductVariants")
-                        .HasForeignKey("SizeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SizeId");
 
                     b.Navigation("Color");
 
@@ -655,8 +701,6 @@ namespace StoreApi.Migrations
                     b.Navigation("ProductAttributes");
 
                     b.Navigation("ProductImages");
-
-                    b.Navigation("productCustomAttributes");
 
                     b.Navigation("productVariants");
                 });

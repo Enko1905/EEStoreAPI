@@ -1,11 +1,15 @@
-﻿namespace Entities.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entities.Models
 {
     public class Color
     {
         public int ColorId { get; set; }
-        public string ColorName { get; set; }
-        public string? ColorCode { get; set; }
 
+        [MaxLength(50)]
+        public string ColorName { get; set; }
+        [MaxLength(20)]
+        public string? ColorCode { get; set; }
         public ICollection<ProductVariants> ProductVariants { get; set; }
     }
 
