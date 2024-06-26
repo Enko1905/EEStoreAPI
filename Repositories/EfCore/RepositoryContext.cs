@@ -35,17 +35,17 @@ namespace Repositories.EfCore
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductAttribute> ProductAttributes { get; set; }
         public DbSet<ProductVariants> ProductVariants { get; set; }
-        public DbSet<ProductCustomVariants> productCustomVariants { get; set; }   
+       // public DbSet<ProductCustomVariants> productCustomVariants { get; set; }   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           // base.OnModelCreating(modelBuilder);
-           
+            //base.OnModelCreating(modelBuilder);
+
             // Veritabanındaki sütun adını belirtin
             //base.OnModelCreating(modelBuilder);
 
 
 
-
+             //modelBuilder.ApplyConfiguration(new MainCategoryConfig());
             // modelBuilder.ApplyConfiguration(new ProductConfig());
             // modelBuilder.ApplyConfiguration(new CategoryConfig());
 

@@ -23,20 +23,20 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProdutAttribute([FromBody] ProductAttributeDtoForInsert productAttributeDto)
         {
-            await _manager.ProductAttributeService.CreateProductAttribute(productAttributeDto);
+            await _manager.ProductAttributeService.CreateProductAttributeAsync(productAttributeDto);
             return StatusCode(201,productAttributeDto);
         }
 
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateProdutAttribute([FromRoute] int id, [FromBody] ProductAttributeDtoForUpdate productAttributeDto)
         {
-            await _manager.ProductAttributeService.UpdateProductAttribute(id,productAttributeDto);
+            await _manager.ProductAttributeService.UpdateProductAttributeAsync(id,productAttributeDto);
             return StatusCode(201, productAttributeDto);
         }
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteProdutAttribute([FromRoute] int id)
         {
-            await _manager.ProductAttributeService.DeleteProductAttribute(id);
+            await _manager.ProductAttributeService.DeleteProductAttributeAsync(id);
             return StatusCode(201);
         }
     }

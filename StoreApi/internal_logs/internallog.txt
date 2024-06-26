@@ -538,3 +538,123 @@
 2024-06-21 15:26:24.5094 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
 2024-06-21 15:26:24.5315 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
 2024-06-21 15:26:24.5527 Info Configuration initialized.
+2024-06-21 15:50:16.0052 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-21 15:50:16.0258 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-21 15:50:16.0430 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-21 15:50:16.0594 Info Configuration initialized.
+2024-06-21 15:51:23.0004 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-21 15:51:23.0214 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-21 15:51:23.0364 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-21 15:51:23.0504 Info Configuration initialized.
+2024-06-21 16:54:30.4132 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-21 16:54:30.4536 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-21 16:54:30.4696 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-21 16:54:30.4829 Info Configuration initialized.
+2024-06-21 17:08:16.3492 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-21 17:08:16.3735 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-21 17:08:16.3917 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-21 17:08:16.4073 Info Configuration initialized.
+2024-06-21 19:17:38.0240 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-21 19:17:38.0461 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-21 19:17:38.0615 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-21 19:17:38.0759 Info Configuration initialized.
+2024-06-21 21:12:37.2244 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-21 21:12:37.2444 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-21 21:12:37.2594 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-21 21:12:37.3020 Info Configuration initialized.
+2024-06-22 19:15:26.2148 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:15:26.2536 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:15:26.2688 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:15:26.2839 Info Configuration initialized.
+2024-06-22 19:29:35.7905 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:29:35.8103 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:29:35.8252 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:29:35.8252 Info Configuration initialized.
+2024-06-22 19:31:29.7336 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:31:29.7541 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:31:29.7694 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:31:29.7827 Info Configuration initialized.
+2024-06-22 19:37:29.7907 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:37:29.8126 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:37:29.8277 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:37:29.8429 Info Configuration initialized.
+2024-06-22 19:38:21.6566 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:38:21.6765 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:38:21.6959 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:38:21.7120 Info Configuration initialized.
+2024-06-22 19:40:41.0607 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:40:41.0790 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:40:41.0940 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:40:41.1074 Info Configuration initialized.
+2024-06-22 19:43:34.2706 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:43:34.2899 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:43:34.3047 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:43:34.3172 Info Configuration initialized.
+2024-06-22 19:45:49.4977 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:45:49.5182 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:45:49.5341 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:45:49.5491 Info Configuration initialized.
+2024-06-22 19:46:33.7081 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:46:33.7385 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:46:33.7701 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:46:33.7985 Info Configuration initialized.
+2024-06-22 19:48:46.3828 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:48:46.4030 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:48:46.4218 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:48:46.4352 Info Configuration initialized.
+2024-06-22 19:50:51.7017 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:50:51.7219 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:50:51.7383 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:50:51.7525 Info Configuration initialized.
+2024-06-22 19:52:09.9155 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 19:52:09.9381 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 19:52:09.9567 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 19:52:09.9716 Info Configuration initialized.
+2024-06-22 20:07:18.8299 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 20:07:18.8503 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 20:07:18.8647 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 20:07:18.8766 Info Configuration initialized.
+2024-06-22 20:11:44.5734 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 20:11:44.5923 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 20:11:44.6121 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 20:11:44.6265 Info Configuration initialized.
+2024-06-22 20:14:35.0656 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-22 20:14:35.0855 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-22 20:14:35.1027 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-22 20:14:35.1167 Info Configuration initialized.
+2024-06-25 23:24:54.8094 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:24:54.8571 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:24:54.8745 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:24:54.8879 Info Configuration initialized.
+2024-06-25 23:25:36.6270 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:25:36.6482 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:25:36.6626 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:25:36.6746 Info Configuration initialized.
+2024-06-25 23:26:37.4379 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:26:37.4588 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:26:37.4752 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:26:37.4903 Info Configuration initialized.
+2024-06-25 23:28:50.8326 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:28:50.8553 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:28:50.8735 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:28:50.8890 Info Configuration initialized.
+2024-06-25 23:31:16.0792 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:31:16.1026 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:31:16.1214 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:31:16.1371 Info Configuration initialized.
+2024-06-25 23:34:32.0351 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:34:32.0649 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:34:32.0820 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:34:32.0956 Info Configuration initialized.
+2024-06-25 23:38:07.5750 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:38:07.5998 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:38:07.6176 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:38:07.6334 Info Configuration initialized.
+2024-06-25 23:39:08.8973 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-25 23:39:08.9204 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-25 23:39:08.9361 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-25 23:39:08.9511 Info Configuration initialized.
+2024-06-26 00:14:45.0974 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-06-26 00:14:45.1269 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.2.2526. Product version: 5.3.2+8d52d4f3fcdbd84beae3442e1fdc8125598ed81f. GlobalAssemblyCache: False
+2024-06-26 00:14:45.1524 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\StoreApi\bin\Debug\net6.0\NLog.config
+2024-06-26 00:14:45.1720 Info Configuration initialized.

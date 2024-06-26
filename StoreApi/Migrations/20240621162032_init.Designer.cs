@@ -11,7 +11,7 @@ using Repositories.EfCore;
 namespace StoreApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240621085009_init")]
+    [Migration("20240621162032_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,9 @@ namespace StoreApi.Migrations
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<bool>("CategoryStasus")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -183,6 +186,9 @@ namespace StoreApi.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
+                    b.Property<bool?>("MainCategoryStasus")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("MetaDescription")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -273,36 +279,6 @@ namespace StoreApi.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductAttributes");
-                });
-
-            modelBuilder.Entity("Entities.Models.ProductCustomVariants", b =>
-                {
-                    b.Property<int>("ProductCustomVariantId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<uint>("Stock")
-                        .HasMaxLength(2147483647)
-                        .HasColumnType("int unsigned");
-
-                    b.Property<int>("VariantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductCustomVariantId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("VariantId");
-
-                    b.ToTable("productCustomVariants");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductImage", b =>
@@ -453,6 +429,9 @@ namespace StoreApi.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
+                    b.Property<bool?>("SubCategoryStasus")
+                        .HasColumnType("tinyint(1)");
+
                     b.HasKey("SubCategoryId");
 
                     b.HasIndex("CategoryId");
@@ -575,25 +554,6 @@ namespace StoreApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Entities.Models.ProductCustomVariants", b =>
-                {
-                    b.HasOne("Entities.Models.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Models.ProductVariants", "productVariants")
-                        .WithMany()
-                        .HasForeignKey("VariantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Products");
-
-                    b.Navigation("productVariants");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductImage", b =>

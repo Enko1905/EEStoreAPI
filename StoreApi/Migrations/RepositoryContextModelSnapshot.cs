@@ -279,36 +279,6 @@ namespace StoreApi.Migrations
                     b.ToTable("ProductAttributes");
                 });
 
-            modelBuilder.Entity("Entities.Models.ProductCustomVariants", b =>
-                {
-                    b.Property<int>("ProductCustomVariantId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<uint>("Stock")
-                        .HasMaxLength(2147483647)
-                        .HasColumnType("int unsigned");
-
-                    b.Property<int>("VariantId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductCustomVariantId");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("VariantId");
-
-                    b.ToTable("productCustomVariants");
-                });
-
             modelBuilder.Entity("Entities.Models.ProductImage", b =>
                 {
                     b.Property<int>("ProductImageId")
@@ -582,25 +552,6 @@ namespace StoreApi.Migrations
                         .IsRequired();
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("Entities.Models.ProductCustomVariants", b =>
-                {
-                    b.HasOne("Entities.Models.Products", "Products")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Models.ProductVariants", "productVariants")
-                        .WithMany()
-                        .HasForeignKey("VariantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Products");
-
-                    b.Navigation("productVariants");
                 });
 
             modelBuilder.Entity("Entities.Models.ProductImage", b =>

@@ -84,14 +84,14 @@ namespace Presentation.Controllers
                 {
                     if (!productsDto.ProductAttributes.Any(x => x.ProductAttributeId == attributes.ProductAttributeId))
                     {
-                        await _manager.ProductAttributeService.DeleteProductAttribute(attributes.ProductAttributeId);
+                        await _manager.ProductAttributeService.DeleteProductAttributeAsync(attributes.ProductAttributeId);
                     }
                 }
                 foreach(var variants in entity.productVariants.ToList())
                 {
                     if(!productsDto.productVariants.Any(x=>x.VariantId == variants.VariantId))
                     {
-                        await _manager.ProductVariantService.DeleteOneProductVariants(variants.VariantId,false);
+                        await _manager.ProductVariantService.DeleteOneProductVariantsAsync(variants.VariantId,false);
                     }
                 }
             }

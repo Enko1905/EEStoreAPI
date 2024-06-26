@@ -15,7 +15,6 @@ namespace Repositories.EfCore.Config
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasData(
-                new Category { CategoryId = 1, Name = "Demo Category" },
             new Category { CategoryId = 2, Name = "Demo Category2" },
             new Category { CategoryId = 3, Name = "Demo Category3" });
 
