@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Services
-build_property.ProjectDir = C:\Users\enkoc\OneDrive\Masaüstü\eeStore\EEStore\EEStoreAPI\Services\
+build_property.ProjectDir = C:\Users\enkoc\OneDrive\Masaüstü\eestoreapi\EEStore\EEStoreAPI\Services\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

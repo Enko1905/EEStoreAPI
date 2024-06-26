@@ -2,6 +2,7 @@
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
+using Repositories.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.EfCore
 {
-    public class ProductRepository : RepositoryBase<Products>, IProductRepository
+    public sealed class ProductRepository : RepositoryBase<Products>, IProductRepository
     {
         public ProductRepository(RepositoryContext context) : base(context)
         {
@@ -22,10 +23,10 @@ namespace Repositories.EfCore
 
         public async Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters, bool trackChanges)
         {
-            var products = await FindByCondition(b =>
-            ((b.Price >= productParameters.minPrice) &&
-            (b.Price <= productParameters.maxPrice))
-            , trackChanges)
+            var products = await FindAll(trackChanges)
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .Search(productParameters.SerachTerm)
+            .Sort(productParameters.OrderBy)
             .OrderBy(x => x.Id)
             .ToListAsync();
 
