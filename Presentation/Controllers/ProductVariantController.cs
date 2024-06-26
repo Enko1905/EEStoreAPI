@@ -34,13 +34,13 @@ namespace Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProductVariant([FromBody] ProductVariantsDtoForInsert productDto)
         {
-            await _manager.ProductVariantService.CreateOneProductVariants(productDto);
+            await _manager.ProductVariantService.CreateOneProductVariantsAsync(productDto);
             return StatusCode(201,productDto);
         }
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteProductVariant([FromRoute] int id)
         {
-            await _manager.ProductVariantService.DeleteOneProductVariants(id,false);
+            await _manager.ProductVariantService.DeleteOneProductVariantsAsync(id,false);
             return NoContent();
         }
     }

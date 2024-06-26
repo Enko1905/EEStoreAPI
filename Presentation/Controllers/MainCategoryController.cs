@@ -35,7 +35,7 @@ namespace Presentation.Controllers
         [HttpGet("GetAllSubMainCatregory")]
         public async Task<IActionResult> GetAllSubMainCatregory()
         {
-            var entity = await _manger.MainCategoryService.GetAllMainCategoryWithCategoryAndSubCategory(true);
+            var entity = await _manger.MainCategoryService.GetAllMainCategoryWithCategoryAndSubCategoryAsync(true);
             return Ok(entity);
         }
         [HttpPost]

@@ -2,10 +2,12 @@
 using Entities.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
+using Repositories.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
 namespace Repositories.EfCore
@@ -23,8 +25,9 @@ namespace Repositories.EfCore
         public async Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters, bool trackChanges)
         {
             var products = await FindAll(trackChanges)
+            .Search(productParameters.SearchTerm)
             .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
-            .OrderBy(x => x.ProductId)
+            .OrderBy(productParameters.OrderBy)
             .ToListAsync();
 
             return PagedList<Products>.ToPagedList(products,
@@ -35,14 +38,14 @@ namespace Repositories.EfCore
         public async Task<PagedList<Products>> GetAllProductWithAttributeAsync(ProductParameters productParameters, bool trackChanges)
         {
             var products = await FindAll(trackChanges)
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .Search(productParameters.SearchTerm)
                 .Include(p => p.ProductAttributes)
                 .Include(p => p.ProductImages)
                 .Include(p => p.productVariants)
                     .ThenInclude(c => c.Color)
                 .Include(p => p.productVariants)
-
-            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
-            .OrderBy(x => x.ProductId)
+                .OrderBy(productParameters.OrderBy)
             .ToListAsync();
 
 

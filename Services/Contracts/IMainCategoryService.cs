@@ -15,6 +15,6 @@ namespace Services.Contracts
         Task<MainCategoryDto> CreateOneMainCategoryAsync(MainCategoryDtoInsertion MainCategoryDto);
         Task UpdateOneMainCategoryAsync(int id, MainCategoryDtoUpdate MainCategoryDto ,bool trachChanges);
         Task DeleteOneMainCategoryAsync(int id, bool trackChanges);
-        Task<ICollection<MainCategory>> GetAllMainCategoryWithCategoryAndSubCategory(bool trackChanges);
+        Task<ICollection<MainCategory>> GetAllMainCategoryWithCategoryAndSubCategoryAsync(bool trackChanges);
     }
 }

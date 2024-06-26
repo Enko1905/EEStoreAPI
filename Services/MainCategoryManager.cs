@@ -45,7 +45,7 @@ namespace Services
             return _mapper.Map<IEnumerable<MainCategoryDto>>(entity);
         }
 
-        public async Task<ICollection<MainCategory>> GetAllMainCategoryWithCategoryAndSubCategory(bool trackChanges)
+        public async Task<ICollection<MainCategory>> GetAllMainCategoryWithCategoryAndSubCategoryAsync(bool trackChanges)
         {
             var entity = await _manager.MainCategory.GetAllMainCategoryWithCategoryAndSubCategory(trackChanges);
             return entity;

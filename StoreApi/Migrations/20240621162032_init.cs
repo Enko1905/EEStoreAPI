@@ -10,6 +10,8 @@ namespace StoreApi.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.Sql("ALTER DATABASE eestoredb CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;");
+
             migrationBuilder.AlterDatabase()
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -52,7 +54,8 @@ namespace StoreApi.Migrations
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
                     MetaTitle = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MetaDescription = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false)
+                    MetaDescription = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
+                    MainCategoryStasus = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -121,7 +124,8 @@ namespace StoreApi.Migrations
                     Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
                     MetaTitle = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
+                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    CategoryStasus = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -195,7 +199,8 @@ namespace StoreApi.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
                     MetaTitle = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
-                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false)
+                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    SubCategoryStasus = table.Column<bool>(type: "tinyint(1)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -371,35 +376,6 @@ namespace StoreApi.Migrations
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
-            migrationBuilder.CreateTable(
-                name: "productCustomVariants",
-                columns: table => new
-                {
-                    ProductCustomVariantId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    Stock = table.Column<uint>(type: "int unsigned", maxLength: 2147483647, nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    VariantId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_productCustomVariants", x => x.ProductCustomVariantId);
-                    table.ForeignKey(
-                        name: "FK_productCustomVariants_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "ProductId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_productCustomVariants_ProductVariants_VariantId",
-                        column: x => x.VariantId,
-                        principalTable: "ProductVariants",
-                        principalColumn: "VariantId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySQL:Charset", "utf8mb4");
-
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_CityDistrictId",
                 table: "Addresses",
@@ -444,16 +420,6 @@ namespace StoreApi.Migrations
                 name: "IX_ProductAttributes_ProductId",
                 table: "ProductAttributes",
                 column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_productCustomVariants_ProductId",
-                table: "productCustomVariants",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_productCustomVariants_VariantId",
-                table: "productCustomVariants",
-                column: "VariantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProductImages_ProductId",
@@ -506,25 +472,16 @@ namespace StoreApi.Migrations
                 name: "ProductAttributes");
 
             migrationBuilder.DropTable(
-                name: "productCustomVariants");
+                name: "ProductImages");
 
             migrationBuilder.DropTable(
-                name: "ProductImages");
+                name: "ProductVariants");
 
             migrationBuilder.DropTable(
                 name: "CityDistricts");
 
             migrationBuilder.DropTable(
                 name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "ProductVariants");
-
-            migrationBuilder.DropTable(
-                name: "Cities");
-
-            migrationBuilder.DropTable(
-                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Colors");
@@ -534,6 +491,12 @@ namespace StoreApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sizes");
+
+            migrationBuilder.DropTable(
+                name: "Cities");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "SubCategories");

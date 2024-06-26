@@ -24,21 +24,21 @@ namespace Services
             _mapper = mapper;
         }
 
-        public async Task CreateProductAttribute(ProductAttributeDtoForInsert productAttributeDto)
+        public async Task CreateProductAttributeAsync(ProductAttributeDtoForInsert productAttributeDto)
         {
             var entity = _mapper.Map<ProductAttribute>(productAttributeDto);
             _manager.ProductAttribute.Create(entity);
             await _manager.SaveAsync();
         }
 
-        public async Task DeleteProductAttribute(int id)
+        public async Task DeleteProductAttributeAsync(int id)
         {
             var entity = await GetOneProductAttributeByIdAndCheckExists(id, false);
             _manager.ProductAttribute.Delete(entity);
             await _manager.SaveAsync();
         }
 
-        public async Task UpdateProductAttribute(int id, ProductAttributeDtoForUpdate productAttributeDto)
+        public async Task UpdateProductAttributeAsync(int id, ProductAttributeDtoForUpdate productAttributeDto)
         {
             await GetOneProductAttributeByIdAndCheckExists(id, false);
 

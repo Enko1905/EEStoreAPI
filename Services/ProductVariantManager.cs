@@ -24,14 +24,14 @@ namespace Services
         }
 
 
-        public async Task CreateOneProductVariants(ProductVariantsDtoForInsert ProductVariantsDto)
+        public async Task CreateOneProductVariantsAsync(ProductVariantsDtoForInsert ProductVariantsDto)
         {
             var entity = _mapper.Map<ProductVariants>(ProductVariantsDto);
             _manager.ProductVariant.Create(entity);
             await _manager.SaveAsync();
         }
 
-        public async Task DeleteOneProductVariants(int id, bool trackChanges)
+        public async Task DeleteOneProductVariantsAsync(int id, bool trackChanges)
         {
             var entity = await GetOneProductVariantsByIdAndCheckExists(id, trackChanges);
             _manager.ProductVariant.Delete(entity);
@@ -50,7 +50,7 @@ namespace Services
             return _mapper.Map<ProductVariantDto>(entity);
         }
 
-        public async Task UpdateOneProductVariants(int id, ProductVariantsDtoForUpdate ProductVariantsDto, bool trackChanges)
+        public async Task UpdateOneProductVariantsAsync(int id, ProductVariantsDtoForUpdate ProductVariantsDto, bool trackChanges)
         {
             await GetOneProductVariantsByIdAndCheckExists(id, trackChanges);
             var entity = _mapper.Map<ProductVariants>(ProductVariantsDto);

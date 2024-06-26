@@ -10,8 +10,8 @@ namespace Services.Contracts
 {
     public interface IProductAttributeService
     {
-        Task CreateProductAttribute(ProductAttributeDtoForInsert productAttributeDto);
-        Task UpdateProductAttribute(int id,ProductAttributeDtoForUpdate productAttributeDto);
-        Task DeleteProductAttribute(int id);
+        Task CreateProductAttributeAsync(ProductAttributeDtoForInsert productAttributeDto);
+        Task UpdateProductAttributeAsync(int id,ProductAttributeDtoForUpdate productAttributeDto);
+        Task DeleteProductAttributeAsync(int id);
     }
 }

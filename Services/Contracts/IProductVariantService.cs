@@ -12,8 +12,8 @@ namespace Services.Contracts
     {
         Task<IEnumerable<ProductVariantDto>> GetAllProductVariantsSkuCodeAsync(int id, bool trackChanges);
         Task<ProductVariantDto> GetOneProductVariantsSkuCodeAync(int id, bool trackChanges);
-        Task CreateOneProductVariants(ProductVariantsDtoForInsert ProductVariantsDto);
-        Task UpdateOneProductVariants(int id, ProductVariantsDtoForUpdate ProductVariantsDto,bool trackChanges);
-        Task DeleteOneProductVariants(int id, bool trackChanges);
+        Task CreateOneProductVariantsAsync(ProductVariantsDtoForInsert ProductVariantsDto);
+        Task UpdateOneProductVariantsAsync(int id, ProductVariantsDtoForUpdate ProductVariantsDto,bool trackChanges);
+        Task DeleteOneProductVariantsAsync(int id, bool trackChanges);
     }
 }
