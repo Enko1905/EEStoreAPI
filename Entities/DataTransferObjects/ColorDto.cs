@@ -8,8 +8,8 @@ namespace Entities.DataTransferObjects
 {
     public record ColorDto
     {
-        public int ColorId { get; init; }
-        public string ColorName { get; init; }
+        public int Id { get; init; }
+        public string Name { get; init; }
         public string? ColorCode { get; init; }
 
     }

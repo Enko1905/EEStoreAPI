@@ -1,9 +1,14 @@
 ﻿namespace Entities.DataTransferObjects
 {
-    public record ProductDtoForInsertion:ProductDtoForManipulation
+    public record ProductDtoForInsertion : ProductDtoForManipulation
     {
-        public ICollection<ProductImageDto> ?ProductImages { get; set; }
-        public ICollection<ProductAttributeDto>? ProductAttributes { get; set; }
-        public ICollection<ProductVariantDto>? productVariants { get; set; }
+        public DateTime CreateDate { get; set; }
+        public ProductDtoForInsertion()
+        {
+            CreateDate = DateTime.UtcNow;
+        }
+        public ICollection<ProductImageDtoForInsert>? ProductImages { get; set; }
+        public ICollection<ProductAttributeDtoForInsert>? ProductAttributes { get; set; }
+        public ICollection<ProductVariantsDtoForInsert>? productVariants { get; set; }
     }
 }

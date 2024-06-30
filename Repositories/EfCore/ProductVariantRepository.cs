@@ -27,14 +27,14 @@ namespace Repositories.EfCore
                 .Include(p=>p.Products)
                 .Include(p=>p.Color)
                 .Include(p=>p.Size)
-                .OrderByDescending(x => x.VariantId)
+                .OrderByDescending(x => x.Id)
                 .ToListAsync();
         }
 
 
         public async Task<ProductVariants> GetOneProductVariantsSkuCodeAync(int id, bool trackChanges)
         {
-            return await FindByCondition(x => x.VariantId==id, trackChanges)
+            return await FindByCondition(x => x.Id==id, trackChanges)
            .Include(p => p.Products)
            .Include(p => p.Color)
            .Include(p => p.Size)

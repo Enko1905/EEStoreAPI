@@ -12,28 +12,42 @@ namespace Entities.Models
     public class Products
     {
         [Key]
-        public int ProductId { get; set; }
+        public int Id { get; set; }
 
-        [MaxLength(200)]
-        public string ProductName { get; set; }
+        [Required,MaxLength(50)]
+        public string Name { get; set; }
+
+        [Required]
         public decimal Price { get; set; }
 
         public uint? Stock { get; set; }
 
     
 
-        [MaxLength(2500)]
-        public string Description { get; set; }
+        [Required,MaxLength(1500)]
+        public String Description { get; set; }
 
         [ForeignKey("SubCategory")]
+        [Required]
         public int SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
-        [MaxLength(500)]
+        [Required,MaxLength(500)]
         public string ImageUrl { get; set; }
         [MaxLength(150)]
         public string? SKU { get; set; }
-        public bool Status { get; set; }
-        public bool? variousProduct { get; set; } = false;
+
+        public bool Status { get; set; } =true;
+        public bool variousProduct { get; set; } = false;
+        public bool Featured { get; set; } = false;
+
+        public string? Tags { get; set; }
+
+        public decimal? Weight { get; set; }
+        public decimal? Width { get; set; }
+        public decimal? Height { get; set; }
+
+        public DateTime? CreateDate { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdateDate { get; set; }
 
         [ForeignKey("Category")]
         public int? CategoryId { get; set; }

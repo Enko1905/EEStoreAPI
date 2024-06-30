@@ -22,7 +22,7 @@ namespace Repositories.Extensions
                 return products;
             var lowerCaseTerm = searchTerm.Trim().ToLower();
 
-            return products.Where(p => p.ProductName.ToLower().Contains(lowerCaseTerm))
+            return products.Where(p => p.Name.ToLower().Contains(lowerCaseTerm))
                    .Union(products.Where(p => p.Description.ToLower().Contains(lowerCaseTerm)));
 
         }
@@ -31,12 +31,12 @@ namespace Repositories.Extensions
     (this IQueryable<Products> products, string orderByQueryString)
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))
-                return products.OrderBy(b => b.ProductId);
+                return products.OrderBy(b => b.Id);
 
             var orderQuery = OrderQueryBuilder.CreateOrderQuery<Products>(orderByQueryString);
 
             if (orderQuery is null)
-                return products.OrderBy(b => b.ProductId);
+                return products.OrderBy(b => b.Id);
 
             return products.OrderBy(orderQuery);
 

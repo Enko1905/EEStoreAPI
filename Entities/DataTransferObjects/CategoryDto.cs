@@ -11,7 +11,7 @@ namespace Entities.DataTransferObjects
 {
     public record CategoryDto
     {
-        public int CategoryId { get; init; }
+        public int Id { get; init; }
 
         public int MainCategoryId { get; init; }
 
@@ -20,7 +20,7 @@ namespace Entities.DataTransferObjects
         public string Description { get; init; }
 
         public string MetaTitle { get; init; }
-        public bool CategoryStasus { get; init; }
+        public bool Status { get; init; }
 
         public string MetaDescription { get; init; }
 
@@ -35,23 +35,23 @@ namespace Entities.DataTransferObjects
         [Required(ErrorMessage = "Ana kategori ID'si gereklidir.")]
         public int MainCategoryId { get; set; }
 
-        [Required(ErrorMessage = "Ad gereklidir."), MaxLength(100, ErrorMessage = "Ad en fazla 100 karakter olabilir.")]
+        [Required(ErrorMessage = "Ad alanı gereklidir."), MaxLength(50, ErrorMessage = "Ad en fazla 50 karakter olabilir.")]
         public string Name { get; set; }
 
-        [MaxLength(500, ErrorMessage = "Açıklama en fazla 500 karakter olabilir.")]
+        [Required(ErrorMessage = "Açıklama alanı gereklidir."), MaxLength(300, ErrorMessage = "Açıklama en fazla 300 karakter olabilir.")]
         public string Description { get; set; }
 
-        [MaxLength(150, ErrorMessage = "Meta başlık en fazla 150 karakter olabilir.")]
+        [Required(ErrorMessage = "Meta başlığı alanı gereklidir."), MaxLength(50, ErrorMessage = "Meta başlık en fazla 50 karakter olabilir.")]
         public string MetaTitle { get; set; }
 
-        [MaxLength(300, ErrorMessage = "Meta açıklama en fazla 300 karakter olabilir.")]
+        [Required(ErrorMessage = "Meta Açıklama  alanı gereklidir."), MaxLength(300, ErrorMessage = "Meta açıklama en fazla 300 karakter olabilir.")]
         public string MetaDescription { get; set; }
-        public bool? CategoryStasus { get; set; }
+        public bool Status { get; set; }
 
     }
     public record CategoryDtoForUpdate : CategoryDtoForManipulation
     {
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
 
     }
 

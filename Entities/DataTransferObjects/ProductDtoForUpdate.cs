@@ -12,13 +12,18 @@ namespace Entities.DataTransferObjects
 {
     public record ProductDtoForUpdate:ProductDtoForManipulation
     {
-        public int ProductId { get; set; }
-        
-        public ICollection<ProductImageDto>? ProductImages { get; set; }
+        public int Id { get; set; }
+        public DateTime UpdateDate { get; set; }
 
-        public ICollection<ProductAttributeDto>? ProductAttributes { get; set; }
-        public ICollection<ProductVariantDto>? productVariants { get; set; }
+        public ICollection<ProductImageDtoForUpdate>? ProductImages { get; set; }
 
+        public ICollection<ProductAttributeDtoForUpdate>? ProductAttributes { get; set; }
+        public ICollection<ProductVariantsDtoForUpdate>? productVariants { get; set; }
+
+        public ProductDtoForUpdate()
+        {
+            UpdateDate = DateTime.UtcNow;
+        }
     }
 
 }

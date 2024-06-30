@@ -56,7 +56,7 @@ namespace Repositories.EfCore
         }
 
         public async Task<Products> GetOneProductByIdAync(int id, bool trackChanges) =>
-             await FindByCondition(x => x.ProductId == id, trackChanges).SingleOrDefaultAsync();
+             await FindByCondition(x => x.Id == id, trackChanges).SingleOrDefaultAsync();
 
         public async Task<Products> GetOneProductWithAttributeAsync(int id, bool trackChanges)
         {
@@ -66,7 +66,7 @@ namespace Repositories.EfCore
                 .Include(p => p.productVariants)
                     .ThenInclude(c => c.Color)
                 .Include(p => p.productVariants)
-            .FirstOrDefaultAsync(a => a.ProductId==id);
+            .FirstOrDefaultAsync(a => a.Id==id);
             return products;
         }
 

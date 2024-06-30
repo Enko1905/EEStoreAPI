@@ -27,7 +27,7 @@ namespace Repositories.EfCore
         }
 
         public async Task<SubCategory> GetOneSubCategoryByIdAync(int id, bool trackChanges) =>
-            await FindByCondition(x => x.SubCategoryId==id, trackChanges).SingleOrDefaultAsync();
+            await FindByCondition(x => x.Id==id, trackChanges).SingleOrDefaultAsync();
 
         public void UpdateOneSubCategory(SubCategory SubCategory)=>Update(SubCategory);
         

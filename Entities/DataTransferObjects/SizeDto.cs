@@ -8,7 +8,7 @@ namespace Entities.DataTransferObjects
 {
     public record SizeDto
     {
-        public int SizeId { get; init; }
-        public string SizeName { get; init; }
+        public int Id { get; init; }
+        public string Name { get; init; }
     }
 }
