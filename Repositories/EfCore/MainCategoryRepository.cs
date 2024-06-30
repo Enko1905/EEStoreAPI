@@ -25,7 +25,7 @@ namespace Repositories.EfCore
 
         public async Task<IEnumerable<MainCategory>> GetAllMainCategoryAsync(bool trackChanges)
         {
-            var entity = await FindAll(trackChanges).OrderByDescending(x => x.MainCategoryId).ToListAsync();
+            var entity = await FindAll(trackChanges).OrderByDescending(x => x.Id).ToListAsync();
             return entity;
         }
 
@@ -39,7 +39,7 @@ namespace Repositories.EfCore
 
         public async Task<MainCategory> GetOneMainCategoryByIdAync(int id, bool trackChanges)
         {
-            return await FindByCondition(x => x.MainCategoryId==id, trackChanges).SingleOrDefaultAsync();
+            return await FindByCondition(x => x.Id==id, trackChanges).SingleOrDefaultAsync();
         }
 
         public void UpdateOneMainCategory(MainCategory mainCategory) => Update(mainCategory);

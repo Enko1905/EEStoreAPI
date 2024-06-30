@@ -52,7 +52,7 @@ namespace Services
         {
             await GetOneCategoryByIdAndCheckExists(id, false);
 
-            var entity = await _manager.Category.FindByCondition(x => x.CategoryId.Equals(id), trackChanges).SingleOrDefaultAsync();
+            var entity = await _manager.Category.FindByCondition(x => x.Id.Equals(id), trackChanges).SingleOrDefaultAsync();
             return _mapper.Map<CategoryDto>(entity);
         }
 

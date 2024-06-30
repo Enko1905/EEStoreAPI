@@ -9,7 +9,7 @@
 
         public ProductParameters()
         {
-            OrderBy = "ProductId";
+            OrderBy = "Id";
         }
     }
 }

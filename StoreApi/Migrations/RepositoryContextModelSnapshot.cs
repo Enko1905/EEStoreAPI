@@ -52,17 +52,14 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("CategoryStasus")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<int>("MainCategoryId")
                         .HasColumnType("int");
@@ -74,15 +71,18 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("MetaTitle")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
-                    b.HasKey("CategoryId");
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("MainCategoryId");
 
@@ -95,7 +95,7 @@ namespace StoreApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CategoryName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -103,23 +103,23 @@ namespace StoreApi.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsProductId")
+                    b.Property<int>("ProductsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductsProductId");
+                    b.HasIndex("ProductsId");
 
                     b.ToTable("CategoryDifferents");
                 });
 
             modelBuilder.Entity("Entities.Models.City", b =>
                 {
-                    b.Property<int>("CityId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CityName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -127,26 +127,26 @@ namespace StoreApi.Migrations
                     b.Property<string>("PlateCode")
                         .HasColumnType("longtext");
 
-                    b.HasKey("CityId");
+                    b.HasKey("Id");
 
                     b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("Entities.Models.CityDistricts", b =>
                 {
-                    b.Property<int>("CityDistrictsId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<int>("CityId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DistrictsName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.HasKey("CityDistrictsId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CityId");
 
@@ -155,7 +155,7 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.Color", b =>
                 {
-                    b.Property<int>("ColorId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -163,19 +163,19 @@ namespace StoreApi.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<string>("ColorName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("ColorId");
+                    b.HasKey("Id");
 
                     b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("Entities.Models.MainCategory", b =>
                 {
-                    b.Property<int>("MainCategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -184,25 +184,25 @@ namespace StoreApi.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<bool?>("MainCategoryStasus")
-                        .HasColumnType("tinyint(1)");
-
                     b.Property<string>("MetaDescription")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("MetaTitle")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("MainCategoryId");
+                    b.Property<bool>("Status")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("MainCategories");
                 });
@@ -281,18 +281,21 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.ProductImage", b =>
                 {
-                    b.Property<int>("ProductImageId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Alt")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("ImageUrl")
-                        .HasMaxLength(800)
-                        .HasColumnType("varchar(800)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductImageId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
@@ -301,7 +304,7 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.Products", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -309,23 +312,32 @@ namespace StoreApi.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(2500)
-                        .HasColumnType("varchar(2500)");
+                        .HasMaxLength(1500)
+                        .HasColumnType("varchar(1500)");
+
+                    b.Property<bool>("Featured")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<decimal?>("Height")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("SKU")
                         .HasMaxLength(150)
@@ -340,10 +352,22 @@ namespace StoreApi.Migrations
                     b.Property<int>("SubCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("variousProduct")
+                    b.Property<string>("Tags")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal?>("Weight")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Width")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("variousProduct")
                         .HasColumnType("tinyint(1)");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -354,7 +378,7 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.ProductVariants", b =>
                 {
-                    b.Property<int>("VariantId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -364,13 +388,16 @@ namespace StoreApi.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<string>("SKU")
+                        .HasColumnType("longtext");
+
                     b.Property<int?>("SizeId")
                         .HasColumnType("int");
 
                     b.Property<uint>("Stock")
                         .HasColumnType("int unsigned");
 
-                    b.HasKey("VariantId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ColorId");
 
@@ -383,34 +410,33 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.Size", b =>
                 {
-                    b.Property<int>("SizeId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("SizeName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.HasKey("SizeId");
+                    b.HasKey("Id");
 
                     b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("Entities.Models.SubCategory", b =>
                 {
-                    b.Property<int>("SubCategoryId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoryId")
-                        .IsRequired()
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("varchar(500)");
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("MetaDescription")
                         .IsRequired()
@@ -419,18 +445,18 @@ namespace StoreApi.Migrations
 
                     b.Property<string>("MetaTitle")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
-                    b.Property<bool?>("SubCategoryStasus")
+                    b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
-                    b.HasKey("SubCategoryId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -439,11 +465,16 @@ namespace StoreApi.Migrations
 
             modelBuilder.Entity("Entities.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -453,12 +484,7 @@ namespace StoreApi.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
@@ -495,7 +521,7 @@ namespace StoreApi.Migrations
                 {
                     b.HasOne("Entities.Models.Products", "Products")
                         .WithMany()
-                        .HasForeignKey("ProductsProductId")
+                        .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

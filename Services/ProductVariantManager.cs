@@ -59,7 +59,7 @@ namespace Services
         }
         public async Task<ProductVariants> GetOneProductVariantsByIdAndCheckExists(int id, bool trackChanges)
         {
-            var entity = await _manager.ProductVariant.FindByCondition(x => x.VariantId == id, trackChanges).SingleOrDefaultAsync();
+            var entity = await _manager.ProductVariant.FindByCondition(x => x.Id == id, trackChanges).SingleOrDefaultAsync();
             if (entity is null)
             {
                 throw new ProductNotFoundException(id);

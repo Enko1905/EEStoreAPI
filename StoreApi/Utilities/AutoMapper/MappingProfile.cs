@@ -32,10 +32,13 @@ namespace StoreApi.Utilities.AutoMapper
 
             //ProductVariant
             CreateMap<ProductVariantDto, ProductVariants>().ReverseMap();
-
+            CreateMap<ProductVariantsDtoForInsert, ProductVariants>();
+            CreateMap<ProductVariantsDtoForUpdate, ProductVariants>().ReverseMap();
+            CreateMap<ProductVariantsDtoForUpdate, ProductVariantDto>();
             //ProductAttribute
             CreateMap<ProductAttribute, ProductAttributeDto>().ReverseMap();
-            CreateMap<ProductAttributeDtoForUpdate, ProductAttribute>();
+            CreateMap<ProductAttributeDtoForUpdate, ProductAttribute>().ReverseMap();
+            CreateMap<ProductAttributeDtoForUpdate, ProductAttributeDto>();
             CreateMap<ProductAttributeDtoForInsert, ProductAttribute>();
 
             //ProductCustomAttribute
@@ -50,10 +53,14 @@ namespace StoreApi.Utilities.AutoMapper
 
             //ProductImage
             CreateMap<ProductImageDto, ProductImage>().ReverseMap();
+            CreateMap<ProductImageDtoForInsert, ProductImage>();
+            CreateMap<ProductImageDtoForUpdate, ProductImage>().ReverseMap();
+            CreateMap<ProductImageDtoForUpdate, ProductImageDto>().ReverseMap();
 
             //ProductVariants
             CreateMap<ProductVariants,ProductVariantDto>().ReverseMap();
-            CreateMap<ProductVariantsDtoForUpdate, ProductVariants>();
+            CreateMap<ProductVariantsDtoForUpdate, ProductVariants>().ReverseMap();
+            CreateMap<ProductVariantsDtoForUpdate, ProductVariantDto>();
             CreateMap<ProductVariantsDtoForInsert, ProductVariants>();  
             
         }

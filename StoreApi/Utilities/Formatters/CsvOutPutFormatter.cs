@@ -25,7 +25,7 @@ namespace StoreApi.Utilities.Formatters
         }
         private static void FormatCsv(StringBuilder buffer, ProductDto book)
         {
-            buffer.AppendLine($"{book.ProductId}, {book.Description}, {book.Price}");
+            buffer.AppendLine($"{book.Id}, {book.Description}, {book.Price}");
         }
 
         public override async Task WriteResponseBodyAsync(OutputFormatterWriteContext context,

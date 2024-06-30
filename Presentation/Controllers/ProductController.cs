@@ -89,9 +89,9 @@ namespace Presentation.Controllers
                 }
                 foreach(var variants in entity.productVariants.ToList())
                 {
-                    if(!productsDto.productVariants.Any(x=>x.VariantId == variants.VariantId))
+                    if(!productsDto.productVariants.Any(x=>x.Id == variants.Id))
                     {
-                        await _manager.ProductVariantService.DeleteOneProductVariantsAsync(variants.VariantId,false);
+                        await _manager.ProductVariantService.DeleteOneProductVariantsAsync(variants.Id,false);
                     }
                 }
             }

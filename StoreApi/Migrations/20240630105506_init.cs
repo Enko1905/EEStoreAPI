@@ -10,8 +10,6 @@ namespace StoreApi.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("ALTER DATABASE eestoredb CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;");
-
             migrationBuilder.AlterDatabase()
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -19,14 +17,14 @@ namespace StoreApi.Migrations
                 name: "Cities",
                 columns: table => new
                 {
-                    CityId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    CityName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     PlateCode = table.Column<string>(type: "longtext", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cities", x => x.CityId);
+                    table.PrimaryKey("PK_Cities", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -34,14 +32,14 @@ namespace StoreApi.Migrations
                 name: "Colors",
                 columns: table => new
                 {
-                    ColorId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    ColorName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     ColorCode = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Colors", x => x.ColorId);
+                    table.PrimaryKey("PK_Colors", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -49,17 +47,17 @@ namespace StoreApi.Migrations
                 name: "MainCategories",
                 columns: table => new
                 {
-                    MainCategoryId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MetaTitle = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MetaDescription = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MainCategoryStasus = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    MetaTitle = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MainCategories", x => x.MainCategoryId);
+                    table.PrimaryKey("PK_MainCategories", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -67,13 +65,13 @@ namespace StoreApi.Migrations
                 name: "Sizes",
                 columns: table => new
                 {
-                    SizeId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    SizeName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sizes", x => x.SizeId);
+                    table.PrimaryKey("PK_Sizes", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -81,15 +79,15 @@ namespace StoreApi.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    UserName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     Password = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -97,19 +95,19 @@ namespace StoreApi.Migrations
                 name: "CityDistricts",
                 columns: table => new
                 {
-                    CityDistrictsId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    DistrictsName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CityDistricts", x => x.CityDistrictsId);
+                    table.PrimaryKey("PK_CityDistricts", x => x.Id);
                     table.ForeignKey(
                         name: "FK_CityDistricts_Cities_CityId",
                         column: x => x.CityId,
                         principalTable: "Cities",
-                        principalColumn: "CityId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -118,23 +116,23 @@ namespace StoreApi.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     MainCategoryId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MetaTitle = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    MetaTitle = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    CategoryStasus = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Categories_MainCategories_MainCategoryId",
                         column: x => x.MainCategoryId,
                         principalTable: "MainCategories",
-                        principalColumn: "MainCategoryId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -155,7 +153,7 @@ namespace StoreApi.Migrations
                         name: "FK_Orders_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -178,13 +176,13 @@ namespace StoreApi.Migrations
                         name: "FK_Addresses_CityDistricts_CityDistrictId",
                         column: x => x.CityDistrictId,
                         principalTable: "CityDistricts",
-                        principalColumn: "CityDistrictsId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Addresses_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -193,23 +191,23 @@ namespace StoreApi.Migrations
                 name: "SubCategories",
                 columns: table => new
                 {
-                    SubCategoryId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
-                    MetaTitle = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: false),
+                    Description = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
+                    MetaTitle = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     MetaDescription = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: false),
-                    SubCategoryStasus = table.Column<bool>(type: "tinyint(1)", nullable: true)
+                    Status = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubCategories", x => x.SubCategoryId);
+                    table.PrimaryKey("PK_SubCategories", x => x.Id);
                     table.ForeignKey(
                         name: "FK_SubCategories_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -218,33 +216,40 @@ namespace StoreApi.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    ProductName = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Stock = table.Column<uint>(type: "int unsigned", nullable: true),
-                    Description = table.Column<string>(type: "varchar(2500)", maxLength: 2500, nullable: false),
+                    Description = table.Column<string>(type: "varchar(1500)", maxLength: 1500, nullable: false),
                     SubCategoryId = table.Column<int>(type: "int", nullable: false),
                     ImageUrl = table.Column<string>(type: "varchar(500)", maxLength: 500, nullable: false),
                     SKU = table.Column<string>(type: "varchar(150)", maxLength: 150, nullable: true),
                     Status = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    variousProduct = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    variousProduct = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Featured = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Tags = table.Column<string>(type: "longtext", nullable: true),
+                    Weight = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Width = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Height = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.ProductId);
+                    table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_SubCategories_SubCategoryId",
                         column: x => x.SubCategoryId,
                         principalTable: "SubCategories",
-                        principalColumn: "SubCategoryId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -256,17 +261,17 @@ namespace StoreApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    ProductsProductId = table.Column<int>(type: "int", nullable: false),
-                    CategoryName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                    ProductsId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoryDifferents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CategoryDifferents_Products_ProductsProductId",
-                        column: x => x.ProductsProductId,
+                        name: "FK_CategoryDifferents_Products_ProductsId",
+                        column: x => x.ProductsId,
                         principalTable: "Products",
-                        principalColumn: "ProductId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -295,7 +300,7 @@ namespace StoreApi.Migrations
                         name: "FK_OrderDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "ProductId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -317,7 +322,7 @@ namespace StoreApi.Migrations
                         name: "FK_ProductAttributes_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "ProductId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -326,19 +331,20 @@ namespace StoreApi.Migrations
                 name: "ProductImages",
                 columns: table => new
                 {
-                    ProductImageId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    ImageUrl = table.Column<string>(type: "varchar(800)", maxLength: 800, nullable: true),
+                    ImageUrl = table.Column<string>(type: "varchar(300)", maxLength: 300, nullable: true),
+                    Alt = table.Column<string>(type: "longtext", nullable: true),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductImages", x => x.ProductImageId);
+                    table.PrimaryKey("PK_ProductImages", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ProductImages_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "ProductId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
@@ -347,32 +353,33 @@ namespace StoreApi.Migrations
                 name: "ProductVariants",
                 columns: table => new
                 {
-                    VariantId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     ProductId = table.Column<int>(type: "int", nullable: false),
+                    SKU = table.Column<string>(type: "longtext", nullable: true),
                     ColorId = table.Column<int>(type: "int", nullable: true),
                     SizeId = table.Column<int>(type: "int", nullable: true),
                     Stock = table.Column<uint>(type: "int unsigned", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductVariants", x => x.VariantId);
+                    table.PrimaryKey("PK_ProductVariants", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ProductVariants_Colors_ColorId",
                         column: x => x.ColorId,
                         principalTable: "Colors",
-                        principalColumn: "ColorId");
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_ProductVariants_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "ProductId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProductVariants_Sizes_SizeId",
                         column: x => x.SizeId,
                         principalTable: "Sizes",
-                        principalColumn: "SizeId");
+                        principalColumn: "Id");
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -392,9 +399,9 @@ namespace StoreApi.Migrations
                 column: "MainCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryDifferents_ProductsProductId",
+                name: "IX_CategoryDifferents_ProductsId",
                 table: "CategoryDifferents",
-                column: "ProductsProductId");
+                column: "ProductsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CityDistricts_CityId",

@@ -23,11 +23,11 @@ namespace Repositories.EfCore
         public void DeleteOneCategory(Category category) => Delete(category);
 
         public async Task<List<Category>> GetAllCategoryAsync(int id ,bool trackChanges) =>
-           await FindAll(trackChanges).Where(x=>x.MainCategoryId.Equals(id)).OrderBy(x=>x.CategoryId).ToListAsync();
+           await FindAll(trackChanges).Where(x=>x.MainCategoryId.Equals(id)).OrderBy(x=>x.Id).ToListAsync();
 
         public async Task<Category> GetOneCategoryByIdAync(int id, bool trackChanges) =>
 
-        await FindByCondition(x => x.CategoryId==id, trackChanges).SingleOrDefaultAsync();
+        await FindByCondition(x => x.Id==id, trackChanges).SingleOrDefaultAsync();
 
         public void UpdateOneCategory(Category category) => Update(category);
 
