@@ -4,6 +4,7 @@ using Microsoft.Extensions.Options;
 using NLog;
 using Presentation.ActionFilters;
 using Repositories.EfCore;
+using Services;
 using Services.Contracts;
 using StoreApi.Extensions;
 
@@ -22,12 +23,12 @@ builder.Services.AddControllers(config =>
 })
 
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
-    .AddNewtonsoftJson(option =>
+   /* .AddNewtonsoftJson(option =>
     { 
         option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 
-    })
-    .AddCustomCsvFormatter()
+    })*/
+  //  .AddCustomCsvFormatter()
     .AddXmlDataContractSerializerFormatters();
 
 
@@ -47,6 +48,10 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
+builder.Services.ConfigureDataShapper();
+
+builder.Services.AddCustomMediaTypes();
+builder.Services.AddScoped<IProductLinks,ProductLinks>();
 
 /*
  * 

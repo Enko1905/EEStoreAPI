@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Entities.DataTransferObjects;
 using Entities.Exceptions;
+using Entities.LinkModels;
 using Entities.Models;
 using Entities.RequestFeatures;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,13 +20,16 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
-        public ProductManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
-        {
+        private readonly IProductLinks _productLinks;
+
+        public ProductManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper , IProductLinks productLinks)
+        {   
             _manager = manager;
             _logger = logger;
             _mapper = mapper;
+            _productLinks = productLinks;
         }
-        
+
         public async Task<ProductDto> CreateOneProductAsync(ProductDtoForInsertion productsDto)
         {
             var entity = _mapper.Map<Products>(productsDto);
@@ -48,6 +53,8 @@ namespace Services
             var productWithsMetaData = await _manager.Product
                 .GetAllProductAsync(productParameters, trachChanges);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(productWithsMetaData);
+
+
             return (productDto, productWithsMetaData.MetaData);
         }
 
@@ -100,23 +107,28 @@ namespace Services
             return entity;
         }
 
-        public async Task<(ICollection<ProductDto>, MetaData metaData)> GetAllProductWithAttiributeAsync(ProductParameters productParameters, bool trachChanges)
+        public async Task<(LinkResponse linkResponse, MetaData metaData)> 
+            GetAllProductWithAttiributeAsync(LinkParameters linkParameters,
+            bool trachChanges)
         {
-            if (!productParameters.ValidPriceRange)
+            if (!linkParameters.ProductParameters.ValidPriceRange)
                 throw new PriceOutofRangeBadRequestException();
 
             var productWithsMetaData = await _manager.Product
-                .GetAllProductWithAttributeAsync(productParameters, trachChanges);
+                .GetAllProductWithAttributeAsync(linkParameters.ProductParameters, trachChanges);
             var productDto = _mapper.Map<ICollection<ProductDto>>(productWithsMetaData);
-            return (productDto, productWithsMetaData.MetaData);
+            var links = _productLinks.TryGenereteLinks(productDto,
+                linkParameters.ProductParameters.Fields,
+                linkParameters.httpContext);
+            return (linkResponse: links, metaData: productWithsMetaData.MetaData);
         }
-
+      
         public async Task<ProductDto> GetOneProductWithAttributeAsync(int id, bool trackChanges)
         {
             var entity = await _manager.Product
-                .GetOneProductWithAttributeAsync(id,trackChanges);
+                .GetOneProductWithAttributeAsync(id, trackChanges);
 
-            return _mapper.Map<ProductDto>(entity); 
+            return _mapper.Map<ProductDto>(entity);
         }
     }
 }

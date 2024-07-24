@@ -1093,6 +1093,9 @@
         }
       },
       "Entities/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0"
+        },
         "runtime": {
           "Entities.dll": {}
         }
