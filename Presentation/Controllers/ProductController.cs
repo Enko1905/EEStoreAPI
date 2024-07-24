@@ -17,23 +17,34 @@ namespace Presentation.Controllers
 {
     [ServiceFilter(typeof(LogFilterAttribute))]
     [ApiController]
-    [Route("api/products")]
+    [Route("api/product")]
     public class ProductController : ControllerBase
     {
         private readonly IServiceManager _manager;
-    
+
         public ProductController(IServiceManager manager)
         {
             _manager = manager;
         }
-        [HttpGet]
+
+        [HttpHead]
+        [HttpGet(Name = "GetAllProductAsync")]
+        [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllProductAsync([FromQuery] ProductParameters productParameters)
         {
-            //var pagedResult = await _manager.ProductService.GetAllProductAsync(productParameters, false);
-            var pagedResult = await _manager.ProductService.GetAllProductWithAttiributeAsync(productParameters, false);
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+            var linkParameters = new LinkParameters()
+            {
+                ProductParameters = productParameters,
+                httpContext = HttpContext
 
-            return Ok(pagedResult.Item1);
+            };
+            //var pagedResult = await _manager.ProductService.GetAllProductAsync(productParameters, false);
+            var result = await _manager.ProductService.GetAllProductWithAttiributeAsync(linkParameters, false);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(result.metaData));
+
+            return result.linkResponse.HasLinks ?
+                Ok(result.linkResponse.LinkedEntities):
+                Ok(result.linkResponse.ShapedEntities);
         }/*
         [HttpGet("GetAllWithAttiribute")]
         public async Task<IActionResult> GetAllWithAttributeProductAsync([FromQuery] ProductParameters productParameters)
@@ -43,14 +54,14 @@ namespace Presentation.Controllers
 
             return Ok(pagedResult.Item1);
         }*/
-/*
-        [HttpGet("GetOneWithAttiribute/{id:int}")]
-        public async Task<IActionResult> GetOneWithAttributeProductAsync([FromRoute] int id)
-        {
-            var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
+        /*
+                [HttpGet("GetOneWithAttiribute/{id:int}")]
+                public async Task<IActionResult> GetOneWithAttributeProductAsync([FromRoute] int id)
+                {
+                    var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
 
-            return Ok(entity);
-        }*/
+                    return Ok(entity);
+                }*/
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneProductAsync([FromRoute(Name = "id")] int id)
         {
@@ -59,7 +70,7 @@ namespace Presentation.Controllers
             return Ok(entity);
         }
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        [HttpPost]
+        [HttpPost(Name = "CreateOneProductAsync")]
         public async Task<IActionResult> CreateOneProductAsync([FromBody] ProductDtoForInsertion productsDto)
         {
 
@@ -72,13 +83,13 @@ namespace Presentation.Controllers
         public async Task<IActionResult> UpdateOneProductAsync([FromRoute(Name = "id")] int id, [FromBody] ProductDtoForUpdate productsDto)
         {
             // var entity = await _manager.ProductService.GetOneProductByIdAsync(id, false);
-          
+
             await _manager.ProductService.UpdateOneProductAsync(id, productsDto);
 
             var entity = await _manager.ProductService.GetOneProductWithAttributeAsync(id, false);
 
-            
-            if(productsDto is not null)
+
+            if (productsDto is not null)
             {
                 foreach (var attributes in entity.ProductAttributes.ToList())
                 {
@@ -87,21 +98,21 @@ namespace Presentation.Controllers
                         await _manager.ProductAttributeService.DeleteProductAttributeAsync(attributes.ProductAttributeId);
                     }
                 }
-                foreach(var variants in entity.productVariants.ToList())
+                foreach (var variants in entity.productVariants.ToList())
                 {
-                    if(!productsDto.productVariants.Any(x=>x.Id == variants.Id))
+                    if (!productsDto.productVariants.Any(x => x.Id == variants.Id))
                     {
-                        await _manager.ProductVariantService.DeleteOneProductVariantsAsync(variants.Id,false);
+                        await _manager.ProductVariantService.DeleteOneProductVariantsAsync(variants.Id, false);
                     }
                 }
             }
 
 
 
-            return NoContent(); 
+            return NoContent();
         }
-        
-        
+
+
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneProductAsync([FromRoute] int id)
         {
@@ -127,6 +138,14 @@ namespace Presentation.Controllers
             }
             await _manager.ProductService.SaveChangesForPatchAsync(result.productDtoForUpdate, result.products);
             return NoContent(); //204 
+        }
+
+        [HttpOptions]
+        public IActionResult GetProductOptions()
+        {
+            //KEY  
+            Response.Headers.Add("Allow", "GET, PUT, POST, PATCH, DELETE, HEAD, OPTIONS");
+            return Ok();
         }
 
     }

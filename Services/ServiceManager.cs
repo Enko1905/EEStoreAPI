@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Entities.DataTransferObjects;
 using Repositories.Contracts;
 using Services.Contracts;
 using System;
@@ -16,10 +17,14 @@ namespace Services
         private readonly Lazy<IMainCategoryService> _mainCategoryService;
         private readonly Lazy<ISubCategoryService> _subCategoryService;
         private readonly Lazy<IProductAttributeService> _productAttributeService;
-        private readonly Lazy<IProductVariantService> _productVariantService;   
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerService logger, IMapper mapper)
+        private readonly Lazy<IProductVariantService> _productVariantService;
+        public ServiceManager(IRepositoryManager repositoryManager,
+            ILoggerService logger,
+            IMapper mapper,
+            IProductLinks productLinks
+            )
         {
-            _productService = new Lazy<IProductService>(() => new ProductManager(repositoryManager, logger, mapper));
+            _productService = new Lazy<IProductService>(() => new ProductManager(repositoryManager, logger, mapper,productLinks));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(repositoryManager, mapper));
             _mainCategoryService = new Lazy<IMainCategoryService>(() => new MainCategoryManager(repositoryManager, mapper));
             _subCategoryService = new Lazy<ISubCategoryService>(() => new SubCategoryManager(repositoryManager, mapper));

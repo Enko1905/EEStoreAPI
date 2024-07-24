@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 using Entities.Models;
 using Entities.DataTransferObjects;
 using Entities.RequestFeatures;
+using System.Dynamic;
+using Entities.LinkModels;
 namespace Services.Contracts
 {
     public interface IProductService
     {
         Task<(IEnumerable<ProductDto>,MetaData metaData)> GetAllProductAsync(ProductParameters productParameters, bool trachChanges);
 
-        Task<(ICollection<ProductDto>, MetaData metaData)> GetAllProductWithAttiributeAsync(ProductParameters productParameters, bool trachChanges);
+        Task<(LinkResponse linkResponse, MetaData metaData)> GetAllProductWithAttiributeAsync(LinkParameters linkParameters, bool trachChanges);
 
 
         Task<ProductDto> GetOneProductByIdAsync(int id, bool trackChanges);
