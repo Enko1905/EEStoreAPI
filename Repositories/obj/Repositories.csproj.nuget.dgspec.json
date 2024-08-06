@@ -45,6 +45,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +67,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         }
       }
     },
@@ -137,7 +147,11 @@
             },
             "System.Linq.Dynamic.Core": {
               "target": "Package",
+<<<<<<< HEAD
               "version": "[1.4.1, )"
+=======
+              "version": "[1.3.14, )"
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
             }
           },
           "imports": [
@@ -156,7 +170,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         }
       }
     }

@@ -9,6 +9,11 @@ namespace Repositories.Contracts
     public interface IRepositoryManager
     {
         IProductRepository Product { get; }
+        ICategoryRepository Category { get; }
+        IMainCategoryRepository MainCategory { get; }
+        ISubCategoryRepository SubCategory { get; }
+        IProductAttributeRepository ProductAttribute { get; }
+        IProductVariantRepository ProductVariant { get; }
         Task SaveAsync();
 
     }

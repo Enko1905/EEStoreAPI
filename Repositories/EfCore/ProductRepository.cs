@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 
 namespace Repositories.EfCore
@@ -24,11 +25,37 @@ namespace Repositories.EfCore
         public async Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters, bool trackChanges)
         {
             var products = await FindAll(trackChanges)
+<<<<<<< HEAD
             .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
             .Search(productParameters.SerachTerm)
             .Sort(productParameters.OrderBy)
             .OrderBy(x => x.Id)
+=======
+            .Search(productParameters.SearchTerm)
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .OrderBy(productParameters.OrderBy)
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
             .ToListAsync();
+
+            return PagedList<Products>.ToPagedList(products,
+                productParameters.PageNumber,
+                productParameters.PageSize);
+        }
+
+        public async Task<PagedList<Products>> GetAllProductWithAttributeAsync(ProductParameters productParameters, bool trackChanges)
+        {
+            var products = await FindAll(trackChanges)
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .Search(productParameters.SearchTerm)
+                .Include(p => p.ProductAttributes)
+                .Include(p => p.ProductImages)
+                .Include(p => p.productVariants)
+                    .ThenInclude(c => c.Color)
+                .Include(p => p.productVariants)
+                .OrderBy(productParameters.OrderBy)
+            .ToListAsync();
+
+
 
             return PagedList<Products>.ToPagedList(products,
                 productParameters.PageNumber,
@@ -37,6 +64,18 @@ namespace Repositories.EfCore
 
         public async Task<Products> GetOneProductByIdAync(int id, bool trackChanges) =>
              await FindByCondition(x => x.Id == id, trackChanges).SingleOrDefaultAsync();
+
+        public async Task<Products> GetOneProductWithAttributeAsync(int id, bool trackChanges)
+        {
+            var products = await FindAll(trackChanges)
+                .Include(p => p.ProductAttributes)
+                .Include(p => p.ProductImages)
+                .Include(p => p.productVariants)
+                    .ThenInclude(c => c.Color)
+                .Include(p => p.productVariants)
+            .FirstOrDefaultAsync(a => a.Id==id);
+            return products;
+        }
 
         public void UpdateOneProduct(Products products) => Update(products);
 

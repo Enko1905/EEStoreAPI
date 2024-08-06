@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+<<<<<<< HEAD
 using System.Reflection;
+=======
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 using System.Text;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
@@ -16,13 +19,19 @@ namespace Repositories.Extensions
             products.Where(product =>
             product.Price >= minPrace &&
             product.Price <= maxPrice);
+<<<<<<< HEAD
         public static IQueryable<Products> Search
             (this IQueryable<Products> products, string searchTerm)
+=======
+
+        public static IQueryable<Products> Search(this IQueryable<Products> products, string searchTerm)
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         {
             if (string.IsNullOrWhiteSpace(searchTerm)) //Boşluk karakteri veya null olup olmadığı Kontrol Edilir 
                 return products;
             var lowerCaseTerm = searchTerm.Trim().ToLower();
 
+<<<<<<< HEAD
             return products
                 .Where(p => p.ProductName
                 .ToLower()
@@ -31,6 +40,15 @@ namespace Repositories.Extensions
 
         public static IQueryable<Products> Sort
             (this IQueryable<Products> products, string orderByQueryString)
+=======
+            return products.Where(p => p.Name.ToLower().Contains(lowerCaseTerm))
+                   .Union(products.Where(p => p.Description.ToLower().Contains(lowerCaseTerm)));
+
+        }
+
+        public static IQueryable<Products> Sort
+    (this IQueryable<Products> products, string orderByQueryString)
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         {
             if (string.IsNullOrWhiteSpace(orderByQueryString))
                 return products.OrderBy(b => b.Id);
@@ -45,6 +63,12 @@ namespace Repositories.Extensions
 
         }
 
+<<<<<<< HEAD
 
     }
 }
+=======
+    }
+}
+
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c

@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using NLog;
 using Presentation.ActionFilters;
 using Repositories.EfCore;
+using Services;
 using Services.Contracts;
 using StoreApi.Extensions;
 
@@ -21,8 +23,12 @@ builder.Services.AddControllers(config =>
 })
 
     .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly)
-    .AddNewtonsoftJson()
-    .AddCustomCsvFormatter()
+   /* .AddNewtonsoftJson(option =>
+    { 
+        option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+    })*/
+  //  .AddCustomCsvFormatter()
     .AddXmlDataContractSerializerFormatters();
 
 
@@ -37,10 +43,18 @@ builder.Services.ConfigureMysqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServicesManager();
 builder.Services.ConfigureLoggerSerciesManager();
+
 builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShapper();
+<<<<<<< HEAD
+=======
+
+builder.Services.AddCustomMediaTypes();
+builder.Services.AddScoped<IProductLinks,ProductLinks>();
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 
 /*
  * 
@@ -69,6 +83,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+
 }
 
 /*

@@ -8,9 +8,10 @@ namespace Entities.RequestFeatures
 {
     public abstract class RequestParameters
     {
-        const int maxPageSize = 50;
+        const int maxPageSize = 30;
         public int PageNumber { get; set; }
-        private int _pageSize;
+
+        private int _pageSize = 24;
 
         public int PageSize
         {
@@ -20,7 +21,11 @@ namespace Entities.RequestFeatures
 
         public String? OrderBy { get; set; }
 
+<<<<<<< HEAD
         public String? Fields {  get; set; }
+=======
+        public String? Fields { get; set; }
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 
     }
 }
