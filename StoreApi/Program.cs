@@ -40,6 +40,7 @@ builder.Services.ConfigureLoggerSerciesManager();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
+builder.Services.ConfigureDataShapper();
 
 /*
  * 

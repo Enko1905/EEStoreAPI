@@ -6,7 +6,7 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace StoreApi.Migrations
 {
-    public partial class StartPoint : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -61,9 +61,9 @@ namespace StoreApi.Migrations
                 columns: new[] { "Id", "CategoryId", "DateTime", "Description", "Price", "ProductName", "Stok" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5845), "Demo Description", 0m, "Demo Product Name", 1 },
-                    { 2, 2, new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5857), "Demo Description_1", 0m, "Demo Product Name_1", 2 },
-                    { 3, 3, new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5858), "Demo Description_2", 0m, "Demo Product Name_2", 3 }
+                    { 1, 1, new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4554), "Demo Description", 0m, "Demo Product Name", 1 },
+                    { 2, 2, new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4563), "Demo Description_1", 0m, "Demo Product Name_1", 2 },
+                    { 3, 3, new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4564), "Demo Description_2", 0m, "Demo Product Name_2", 3 }
                 });
         }
 

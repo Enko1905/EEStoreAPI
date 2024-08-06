@@ -11,8 +11,8 @@ using Repositories.EfCore;
 namespace StoreApi.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240511180617_StartPoint")]
-    partial class StartPoint
+    [Migration("20240702085548_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,7 +88,7 @@ namespace StoreApi.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            DateTime = new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5845),
+                            DateTime = new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4554),
                             Description = "Demo Description",
                             Price = 0m,
                             ProductName = "Demo Product Name",
@@ -98,7 +98,7 @@ namespace StoreApi.Migrations
                         {
                             Id = 2,
                             CategoryId = 2,
-                            DateTime = new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5857),
+                            DateTime = new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4563),
                             Description = "Demo Description_1",
                             Price = 0m,
                             ProductName = "Demo Product Name_1",
@@ -108,7 +108,7 @@ namespace StoreApi.Migrations
                         {
                             Id = 3,
                             CategoryId = 3,
-                            DateTime = new DateTime(2024, 5, 11, 21, 6, 17, 383, DateTimeKind.Local).AddTicks(5858),
+                            DateTime = new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4564),
                             Description = "Demo Description_2",
                             Price = 0m,
                             ProductName = "Demo Product Name_2",

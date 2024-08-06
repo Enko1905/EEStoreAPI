@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.DataTransferObjects;
+using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repositories.Contracts;
 using Repositories.EfCore;
@@ -48,6 +50,11 @@ namespace StoreApi.Extensions
                     .WithExposedHeaders("X-Pagination")
                 );
             });
+        }
+
+        public static void ConfigureDataShapper(this IServiceCollection services) 
+        {
+            services.AddScoped<IDataShaper<ProductDto>, DataShaper<ProductDto>>();
         }
     }
 }
