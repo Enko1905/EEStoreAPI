@@ -371,6 +371,39 @@ namespace StoreApi.Migrations
 
                     b.HasIndex("CategoryId");
 
+<<<<<<< HEAD
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            DateTime = new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4554),
+                            Description = "Demo Description",
+                            Price = 0m,
+                            ProductName = "Demo Product Name",
+                            Stok = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            DateTime = new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4563),
+                            Description = "Demo Description_1",
+                            Price = 0m,
+                            ProductName = "Demo Product Name_1",
+                            Stok = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 3,
+                            DateTime = new DateTime(2024, 7, 2, 11, 55, 48, 577, DateTimeKind.Local).AddTicks(4564),
+                            Description = "Demo Description_2",
+                            Price = 0m,
+                            ProductName = "Demo Product Name_2",
+                            Stok = 3
+                        });
+=======
                     b.HasIndex("SubCategoryId");
 
                     b.ToTable("Products");
@@ -695,6 +728,7 @@ namespace StoreApi.Migrations
             modelBuilder.Entity("Entities.Models.User", b =>
                 {
                     b.Navigation("Orders");
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
                 });
 #pragma warning restore 612, 618
         }

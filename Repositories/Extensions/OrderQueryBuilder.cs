@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+﻿using Entities.Models;
+using System;
+=======
 ﻿using System;
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,7 +14,11 @@ namespace Repositories.Extensions
 {
     public static class OrderQueryBuilder
     {
+<<<<<<< HEAD
+        public static String CreateOrderQuery<T>(String orderByQueryString) 
+=======
         public static String CreateOrderQuery<T>(String orderByQueryString)
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         {
             var orderByParamans = orderByQueryString.Trim().Split(',');
 
@@ -39,6 +48,10 @@ namespace Repositories.Extensions
 
             var orderQuery = orderQueryBuilder.ToString().TrimEnd(',', ' ');
             return orderQuery;
+<<<<<<< HEAD
+        } 
+=======
         }
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
     }
 }

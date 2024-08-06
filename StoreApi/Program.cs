@@ -49,9 +49,12 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShapper();
+<<<<<<< HEAD
+=======
 
 builder.Services.AddCustomMediaTypes();
 builder.Services.AddScoped<IProductLinks,ProductLinks>();
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 
 /*
  * 

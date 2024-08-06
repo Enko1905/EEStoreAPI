@@ -21,7 +21,11 @@ namespace Entities.RequestFeatures
 
         public String? OrderBy { get; set; }
 
+<<<<<<< HEAD
+        public String? Fields {  get; set; }
+=======
         public String? Fields { get; set; }
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 
     }
 }

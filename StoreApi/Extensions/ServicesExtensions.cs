@@ -1,6 +1,10 @@
 ﻿using Entities.DataTransferObjects;
+<<<<<<< HEAD
+using Entities.Models;
+=======
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repositories.Contracts;
@@ -53,6 +57,13 @@ namespace StoreApi.Extensions
                 );
             });
         }
+<<<<<<< HEAD
+
+        public static void ConfigureDataShapper(this IServiceCollection services) 
+        {
+            services.AddScoped<IDataShaper<ProductDto>, DataShaper<ProductDto>>();
+        }
+=======
         public static void ConfigureDataShapper(this IServiceCollection services)
         {
             services.AddScoped<IDataShaper<ProductDto>, DataShaper<ProductDto>>();
@@ -89,5 +100,6 @@ namespace StoreApi.Extensions
         });
 
         }
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
     }
 }

@@ -1424,7 +1424,11 @@
           "lib/netstandard1.6/System.Linq.dll": {}
         }
       },
+<<<<<<< HEAD
+      "System.Linq.Dynamic.Core/1.4.1": {
+=======
       "System.Linq.Dynamic.Core/1.3.14": {
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         "type": "package",
         "compile": {
           "lib/net6.0/System.Linq.Dynamic.Core.dll": {
@@ -2009,7 +2013,11 @@
           "Microsoft.EntityFrameworkCore": "6.0.25",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.25",
           "Mysql.EntityFrameworkCore": "6.0.25",
+<<<<<<< HEAD
+          "System.Linq.Dynamic.Core": "1.4.1"
+=======
           "System.Linq.Dynamic.Core": "1.3.14"
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         },
         "compile": {
           "bin/placeholder/Repositories.dll": {}
@@ -4112,10 +4120,17 @@
         "system.linq.nuspec"
       ]
     },
+<<<<<<< HEAD
+    "System.Linq.Dynamic.Core/1.4.1": {
+      "sha512": "GpltaPbBODbDQh2RtTc/PvjYg0eGzntznrU0tZmVf/RZrig0SWAwKx2pxj9YbDqb4p2ZsNJhHH1v7e1+d3iUdg==",
+      "type": "package",
+      "path": "system.linq.dynamic.core/1.4.1",
+=======
     "System.Linq.Dynamic.Core/1.3.14": {
       "sha512": "aiDKm/1/Bjz6vpB800Vftg2VIjnffvBSufpP9wpShD6zfb9cU+dSVdmrIu2S59z6x7Iwule6feEwxJP2kpyfgA==",
       "type": "package",
       "path": "system.linq.dynamic.core/1.3.14",
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4167,7 +4182,11 @@
         "lib/uap10.0.10240/System.Linq.Dynamic.Core.pri",
         "lib/uap10.0.10240/System.Linq.Dynamic.Core.xml",
         "logo.png",
+<<<<<<< HEAD
+        "system.linq.dynamic.core.1.4.1.nupkg.sha512",
+=======
         "system.linq.dynamic.core.1.3.14.nupkg.sha512",
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         "system.linq.dynamic.core.nuspec"
       ]
     },
@@ -5835,11 +5854,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Presentation\\Presentation.csproj",
+      "projectUniqueName": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Presentation\\Presentation.csproj",
       "projectName": "Presentation",
-      "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Presentation\\Presentation.csproj",
+      "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Presentation\\Presentation.csproj",
       "packagesPath": "C:\\Users\\enkoc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Presentation\\obj\\",
+      "outputPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Presentation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\enkoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5857,8 +5876,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Services\\Services.csproj": {
-              "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Services\\Services.csproj"
+            "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Services\\Services.csproj"
             }
           }
         }
@@ -5911,7 +5930,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
       }
     }
   }

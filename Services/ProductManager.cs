@@ -20,6 +20,15 @@ namespace Services
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
         private readonly IMapper _mapper;
+<<<<<<< HEAD
+        private readonly IDataShaper<ProductDto> _shaper;
+        public ProductManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper,IDataShaper<ProductDto> shaper)
+        {
+            _manager = manager;
+            _logger = logger;
+            _mapper = mapper;
+            _shaper = shaper;
+=======
         private readonly IProductLinks _productLinks;
 
         public ProductManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper , IProductLinks productLinks)
@@ -28,6 +37,7 @@ namespace Services
             _logger = logger;
             _mapper = mapper;
             _productLinks = productLinks;
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         }
 
         public async Task<ProductDto> CreateOneProductAsync(ProductDtoForInsertion productsDto)
@@ -45,7 +55,7 @@ namespace Services
             await _manager.SaveAsync();
         }
 
-        public async Task<(IEnumerable<ProductDto>, MetaData metaData)> GetAllProductAsync(ProductParameters productParameters, bool trachChanges)
+        public async Task<(IEnumerable<ExpandoObject>, MetaData metaData)> GetAllProductAsync(ProductParameters productParameters, bool trachChanges)
         {
             if (!productParameters.ValidPriceRange)
                 throw new PriceOutofRangeBadRequestException();
@@ -54,8 +64,13 @@ namespace Services
                 .GetAllProductAsync(productParameters, trachChanges);
             var productDto = _mapper.Map<IEnumerable<ProductDto>>(productWithsMetaData);
 
+<<<<<<< HEAD
+            var shapedData = _shaper.ShapeData(productDto, productParameters.Fields);
+            return (books : shapedData, metaData : productWithsMetaData.MetaData);
+=======
 
             return (productDto, productWithsMetaData.MetaData);
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         }
 
         public async Task<ProductDto> GetOneProductByIdAsync(int id, bool trackChanges)

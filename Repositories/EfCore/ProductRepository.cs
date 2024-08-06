@@ -25,9 +25,16 @@ namespace Repositories.EfCore
         public async Task<PagedList<Products>> GetAllProductAsync(ProductParameters productParameters, bool trackChanges)
         {
             var products = await FindAll(trackChanges)
+<<<<<<< HEAD
+            .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
+            .Search(productParameters.SerachTerm)
+            .Sort(productParameters.OrderBy)
+            .OrderBy(x => x.Id)
+=======
             .Search(productParameters.SearchTerm)
             .FilterProducts(productParameters.minPrice, productParameters.maxPrice)
             .OrderBy(productParameters.OrderBy)
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
             .ToListAsync();
 
             return PagedList<Products>.ToPagedList(products,

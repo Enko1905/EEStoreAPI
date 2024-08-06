@@ -18,7 +18,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Mysql.EntityFrameworkCore" Version="6.0.25" />
+<<<<<<< HEAD
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.4.1" />
+=======
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.3.14" />
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
   </ItemGroup>
 
   <ItemGroup>

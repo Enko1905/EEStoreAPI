@@ -337,11 +337,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\enkoc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eeStore\\EEStore\\EEStoreAPI\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\enkoc\\OneDrive\\Masaüstü\\eestoreapi\\EEStore\\EEStoreAPI\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\enkoc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -397,7 +397,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+=======
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
       }
     }
   }

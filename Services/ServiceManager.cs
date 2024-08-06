@@ -13,6 +13,11 @@ namespace Services
     public class ServiceManager : IServiceManager
     {
         private readonly Lazy<IProductService> _productService;
+<<<<<<< HEAD
+        public ServiceManager(IRepositoryManager repositoryManager, ILoggerService logger , IMapper mapper, IDataShaper<ProductDto> shaper)
+        {
+            _productService = new Lazy<IProductService>(() => new ProductManager(repositoryManager,logger,mapper,shaper));
+=======
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<IMainCategoryService> _mainCategoryService;
         private readonly Lazy<ISubCategoryService> _subCategoryService;
@@ -30,6 +35,7 @@ namespace Services
             _subCategoryService = new Lazy<ISubCategoryService>(() => new SubCategoryManager(repositoryManager, mapper));
             _productAttributeService = new Lazy<IProductAttributeService>(() => new ProductAttributeManager(repositoryManager, mapper));
             _productVariantService = new Lazy<IProductVariantService>(() => new ProductVariantManager(repositoryManager, mapper));
+>>>>>>> 475fa9d2df6d15050b6f161b88f099728dd8905c
         }
         public IProductService ProductService => _productService.Value;
 
