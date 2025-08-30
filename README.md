@@ -1,0 +1,1 @@
+Tamamlanmadı ve eğitim için 
